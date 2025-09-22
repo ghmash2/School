@@ -17,20 +17,20 @@ Route::get('/', function () {
 // About Us Routes
 Route::prefix('about')->name('about.')->group(function () {
     Route::get('/glance', function () { return view('module.about.glance'); })->name('glance');
-    Route::get('/history', function () { return view('about.history'); })->name('history');
-    Route::get('/why-study', function () { return view('about.why-study'); })->name('why-study');
-    Route::get('/infrastructure', function () { return view('about.infrastructure'); })->name('infrastructure');
-    Route::get('/achievements', function () { return view('about.achievements'); })->name('achievements');
-    Route::get('/news-events', function () { return view('about.news-events'); })->name('news-events');
+    Route::get('/history', function () { return view('module.about.history'); })->name('history');
+    Route::get('/why-study', function () { return view('module.about.why_study'); })->name('why-study');
+    Route::get('/infrastructure', function () { return view('module.about.infrastructure'); })->name('infrastructure');
+    Route::get('/achievements', function () { return view('module.about.achievements'); })->name('achievements');
+    Route::get('/news-events', function () { return view('module.about.news_events'); })->name('news-events');
 });
 
 // admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/governing-body', function () { return view('admin.governing-body'); })->name('governing-body');
-    Route::get('/chairman-message', function () { return view('admin.chairman-message'); })->name('chairman-message');
-    Route::get('/principal-message', function () { return view('admin.principal-message'); })->name('principal-message');
-    Route::get('/ex-chairmans', function () { return view('admin.ex-chairmans'); })->name('ex-chairmans');
-    Route::get('/ex-principals', function () { return view('admin.ex-principals'); })->name('ex-principals');
+    Route::get('/governing-body', function () { return view('admin.governing_body'); })->name('governing-body');
+    Route::get('/chairman-message', function () { return view('admin.chairman_message'); })->name('chairman-message');
+    Route::get('/principal-message', function () { return view('admin.principal_message'); })->name('principal-message');
+    Route::get('/ex-chairmans', function () { return view('admin.ex_chairmans'); })->name('ex-chairmans');
+    Route::get('/ex-principals', function () { return view('admin.ex_principals'); })->name('ex-principals');
     Route::get('/teacher-info', function () { return view('admin.teachers'); })->name('teachers');
     Route::get('/staff-info', function () { return view('admin.staffs'); })->name('staffs');
 });
