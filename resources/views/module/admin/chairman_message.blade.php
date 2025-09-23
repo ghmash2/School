@@ -1,30 +1,12 @@
-@extends('layouts.description_type_page')
+@extends('layouts.message_of_person')
 
 @section('title', 'About Us')
 
-@php
-    $sliderImages = [
-        [
-            'image' => 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Library Resources',
-            'desc' => 'Extensive collection of books and digital resources'
-        ]
-    ];
-@endphp
-
-@section('slider-content')
-    @foreach($sliderImages as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ $slide['image'] }}');">
-            <div class="slide-content">
-                <h3 class="slide-title">{{ $slide['title'] }}</h3>
-                <p class="slide-desc">{{ $slide['desc'] }}</p>
-            </div>
-        </div>
-    @endforeach
-@endsection
-
 @section('headline', 'About Agrabad Cantonment Public School & College')
 
+@section('image')
+    <img src="{{ asset('resources/images/test5.png') }}" alt="Message from the Chairman">
+@endsection
 @section('description')
     <p>Agrabad Cantonment Public School & College (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
 
