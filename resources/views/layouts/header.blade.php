@@ -1,7 +1,7 @@
 
 <body>
     <!-- Top info bar -->
-    <div class="top-info-bar">
+    {{-- <div class="top-info-bar">
         <div class="top-info-container">
             <div class="top-info-left">
                 <div class="top-info-item">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Main header -->
     <header class="main-header">
@@ -32,8 +32,8 @@
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <div class="school-name">
-                    <h1>ACPS School & College</h1>
-                    <p>Education for Tomorrow's Leaders</p>
+                    <h1>BAWANY GOVERNMENT ADARSHA BIDDYALAYA</h1>
+                    <p>Knowledge • Discipline • Excellence</p>
                 </div>
             </div>
         </div>
@@ -46,6 +46,9 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu" id="navMenu">
+                 <li class="menu-item">
+                    <a href="{{ route('home') }}">Home </a>
+                </li>
                 <li class="menu-item">
                     <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
@@ -135,9 +138,6 @@
                          <a href="{{ route('gallery.photo') }}">Photo Gallery</a>
                                 <a href="{{ route('gallery.video') }}">Video Gallery</a>
                     </div>
-                </li>
-                 <li class="menu-item">
-                    <a href="{{ route('contact') }}"">Contact <i class="fas fa-chevron-down"></i></a>
                 </li>
 
             </ul>

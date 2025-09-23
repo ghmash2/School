@@ -13,7 +13,7 @@ Route::get('/', function () {
 // Route::get('/', function () {
 //     return view('home');
 // })->name('home');
-
+Route::get('/', function () { return view('welcome'); })->name('home');
 // About Us Routes
 Route::prefix('about')->name('about.')->group(function () {
     Route::get('/glance', function () { return view('module.about.glance'); })->name('glance');
