@@ -3,8 +3,7 @@
     <div class="footer-top">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>About ACPS</h3>
-                <p>Agrabad Cantonment Public School & College is a prestigious educational institution committed to providing quality education and holistic development for students.</p>
+                <h3>Contact Us</h3>
                 <div class="footer-contact">
                     <p><i class="fas fa-map-marker-alt"></i> Agrabad, Chittagong, Bangladesh</p>
                     <p><i class="fas fa-phone"></i> +88 031 1234567</p>
@@ -60,7 +59,7 @@
     <div class="footer-bottom">
         <div class="footer-container">
             <div class="footer-bottom-content">
-                <p>&copy; 2023 Agrabad Cantonment Public School & College. All Rights Reserved.</p>
+                <p>&copy; <a href="https://worldtechsoft.com/" style="color: aliceblue">World Tech</a></p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>

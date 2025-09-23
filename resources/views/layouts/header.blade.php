@@ -54,7 +54,7 @@
                     <div class="dropdown">
                         <a href="{{ route('about.glance') }}">At a Glance</a>
                         <a href="{{ route('about.history') }}">History</a>
-                        <a href="{{ route('about.why-study') }}">Why Study at ACPS</a>
+                        <a href="{{ route('about.why-study') }}">Why Study at BGAB</a>
                         <a href="{{ route('about.infrastructure') }}">Infrastructure</a>
                         <a href="{{ route('about.achievements') }}">Achievements</a>
                         <a href="{{ route('about.news-events') }}">News And Events</a>
@@ -95,8 +95,8 @@
                                 <a href="{{ route('admission.form') }}">Admission Form</a>
                                 <a href="{{ route('admission.result') }}">Admission Result</a>
                                 <a href="{{ route('admission.waiting-list') }}">Waiting List</a>
-                                <a href="{{ route('admission.courses') }}">Course/Program</a>
-                                <a href="{{ route('admission.admit-card') }}">Download Admit Card</a>
+                                <a href="{{ route('admission.courses') }}">Courses</a>
+                                <a href="{{ route('admission.admit-card') }}">Admit Card</a>
                     </div>
                 </li>
 
