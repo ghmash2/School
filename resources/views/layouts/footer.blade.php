@@ -28,11 +28,11 @@
             <div class="footer-section">
                 <h3>Important Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Ministry of Education</a></li>
-                    <li><a href="#">Board of Intermediate Education</a></li>
-                    <li><a href="#">National Curriculum</a></li>
-                    <li><a href="#">Scholarship Information</a></li>
-                    <li><a href="#">Career Opportunities</a></li>
+                    <li><a href="https://moedu.portal.gov.bd/">Ministry of Education</a></li>
+                    <li><a href="https://dhakaeducationboard.portal.gov.bd/">Board of Intermediate Education</a></li>
+                    <li><a href="https://nctb.gov.bd/">National Curriculum</a></li>
+                    <li><a href="https://shed.gov.bd/site/view/scholarship/Scholarship-Notification">Scholarship Information</a></li>
+                    <li><a href="https://www.ilo.org/publications/tvet-students-career-guidance-workbook-bangla">Career Opportunities</a></li>
                 </ul>
             </div>
 
@@ -64,7 +64,6 @@
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-                    <a href="#">Sitemap</a>
                 </div>
             </div>
         </div>

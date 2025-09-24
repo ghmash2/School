@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="notice-actions">
-            <a href="{{ asset('notices/admission-notice-2024.pdf') }}" class="download-btn" title="Download Notice">
+            <a href="{{ asset('notices/admission-notice-2024.pdf') }}" target="_blank" class="download-btn" title="Download Notice">
                 <i class="fas fa-download"></i>
             </a>
         </div>
