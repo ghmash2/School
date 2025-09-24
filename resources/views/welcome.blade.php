@@ -8,13 +8,13 @@
     <main class="main-content">
         <!-- Hero Slider -->
         <section class="hero-slider">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            {{-- <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                 <div class="slide-content">
                     <h2>Welcome to ACPS</h2>
                     <p>Providing quality education since 1985. Shaping future leaders with excellence and integrity.</p>
                     <a href="#" class="btn">Learn More</a>
                 </div>
-            </div>
+            </div> --}}
             <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                 <div class="slide-content">
                     <h2>Academic Excellence</h2>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="about-content">
                     <h2>About ACPS</h2>
-                    <p>Agrabad Cantonment Public School & College is a premier educational institution established in 1985. With a rich history of academic excellence, we have been shaping young minds to become responsible citizens and future leaders.</p>
+                    <p>Bawany Government  Adarsha Biddyalaya is a premier educational institution established in 1985. With a rich history of academic excellence, we have been shaping young minds to become responsible citizens and future leaders.</p>
                     <p>Our campus features state-of-the-art facilities including modern classrooms, well-equipped laboratories, a comprehensive library, and extensive sports facilities. We believe in holistic education that nurtures intellectual, physical, and emotional growth.</p>
                     <p>Our dedicated faculty members are committed to providing quality education and personalized attention to each student. We follow a student-centric approach that encourages critical thinking, creativity, and character development.</p>
                     <a href="#" class="btn">Read More</a>

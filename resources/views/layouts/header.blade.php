@@ -1,4 +1,3 @@
-
 <body>
     <!-- Top info bar -->
     {{-- <div class="top-info-bar">
@@ -46,7 +45,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu" id="navMenu">
-                 <li class="menu-item">
+                <li class="menu-item">
                     <a href="{{ route('home') }}">Home </a>
                 </li>
                 <li class="menu-item">
@@ -55,7 +54,7 @@
                         <a href="{{ route('about.glance') }}">At a Glance</a>
                         <a href="{{ route('about.history') }}">History</a>
                         <a href="{{ route('about.why-study') }}">Why Study at BGAB</a>
-                        <a href="{{ route('about.infrastructure') }}">Infrastructure</a>
+                        {{-- <a href="{{ route('about.infrastructure') }}">Infrastructure</a> --}}
                         <a href="{{ route('about.achievements') }}">Achievements</a>
                         <a href="{{ route('about.news-events') }}">News And Events</a>
                     </div>
@@ -64,11 +63,11 @@
                 <li class="menu-item">
                     <a href="#">Administration <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
-                        <a href="{{ route('admin.governing-body') }}">Governing Body</a>
+                        {{-- <a href="{{ route('admin.governing-body') }}">Governing Body</a> --}}
                         <a href="{{ route('admin.chairman-message') }}">Message Of Chairman</a>
                         <a href="{{ route('admin.principal-message') }}">Message of Principal</a>
-                        <a href="{{ route('admin.ex-chairmans') }}">Ex-Chairmans</a>
-                        <a href="{{ route('admin.ex-principals') }}">Ex-Principals</a>
+                        {{-- <a href="{{ route('admin.ex-chairmans') }}">Ex-Chairmans</a>
+                        <a href="{{ route('admin.ex-principals') }}">Ex-Principals</a> --}}
                         <a href="{{ route('admin.teachers') }}">Teacher Information</a>
                         <a href="{{ route('admin.staffs') }}">Staff Information</a>
                     </div>
@@ -78,12 +77,12 @@
                     <a href="#">Academic <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('academic.calendar') }}">Academic Calendar</a>
-                                <a href="{{ route('academic.routine') }}">Class Routine</a>
-                                <a href="{{ route('academic.syllabus') }}">Syllabus And Booklist</a>
-                                <a href="{{ route('academic.suggestion') }}">Suggestion</a>
-                                <a href="{{ route('academic.exam-routine') }}">Exam Routine</a>
-                                <a href="{{ route('academic.notice') }}">Notice</a>
-                                <a href="{{ route('academic.other') }}">Other</a>
+                        <a href="{{ route('academic.routine') }}">Class Routine</a>
+                        <a href="{{ route('academic.syllabus') }}">Syllabus And Booklist</a>
+                        {{-- <a href="{{ route('academic.suggestion') }}">Suggestion</a> --}}
+                        <a href="{{ route('academic.exam-routine') }}">Exam Routine</a>
+                        <a href="{{ route('academic.notice') }}">Notice</a>
+                        <a href="{{ route('academic.other') }}">Other</a>
                     </div>
                 </li>
 
@@ -91,12 +90,12 @@
                     <a href="#">Admission <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('admission.circular') }}">Admission Circular</a>
-                                <a href="{{ route('admission.prospectus') }}">Prospectus</a>
-                                <a href="{{ route('admission.form') }}">Admission Form</a>
-                                <a href="{{ route('admission.result') }}">Admission Result</a>
-                                <a href="{{ route('admission.waiting-list') }}">Waiting List</a>
-                                <a href="{{ route('admission.courses') }}">Courses</a>
-                                <a href="{{ route('admission.admit-card') }}">Admit Card</a>
+                        <a href="{{ route('admission.prospectus') }}">Prospectus</a>
+                        {{-- <a href="{{ route('admission.form') }}">Admission Form</a> --}}
+                        <a href="{{ route('admission.result') }}">Admission Result</a>
+                        <a href="{{ route('admission.waiting-list') }}">Waiting List</a>
+                        <a href="{{ route('admission.courses') }}">Courses</a>
+                        <a href="{{ route('admission.admit-card') }}">Admit Card</a>
                     </div>
                 </li>
 
@@ -104,21 +103,21 @@
                     <a href="#">Co-curricular <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('co-curricular.sports') }}">Sports</a>
-                                <a href="{{ route('co-curricular.tour') }}">Tour</a>
-                                <a href="{{ route('co-curricular.scout') }}">Scout</a>
-                                <a href="{{ route('co-curricular.bncc') }}">BNCC</a>
+                        <a href="{{ route('co-curricular.tour') }}">Tour</a>
+                        <a href="{{ route('co-curricular.scout') }}">Scout</a>
+                        {{-- <a href="{{ route('co-curricular.bncc') }}">BNCC</a> --}}
                     </div>
                 </li>
                 <li class="menu-item">
                     <a href="#">Club <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('club.ict') }}">ICT Club</a>
-                                <a href="{{ route('club.science') }}">Science Club</a>
-                                <a href="{{ route('club.debate') }}">Debate Club</a>
-                                <a href="{{ route('club.photography') }}">Photography Club</a>
-                                <a href="{{ route('club.cultural') }}">Cultural Club</a>
-                                <a href="{{ route('club.language') }}">Language Club</a>
-                                <a href="{{ route('club.quiz') }}">Quiz Club</a>
+                        <a href="{{ route('club.science') }}">Science Club</a>
+                        <a href="{{ route('club.debate') }}">Debate Club</a>
+                        <a href="{{ route('club.photography') }}">Photography Club</a>
+                        <a href="{{ route('club.cultural') }}">Cultural Club</a>
+                        <a href="{{ route('club.language') }}">Language Club</a>
+                        {{-- <a href="{{ route('club.quiz') }}">Quiz Club</a> --}}
                     </div>
                 </li>
 
@@ -126,17 +125,17 @@
                     <a href="#">Digital Contents <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('digital.six') }}">Class Six</a>
-                                <a href="{{ route('digital.seven') }}">Class Seven</a>
-                                <a href="{{ route('digital.eight') }}">Class Eight</a>
-                                <a href="{{ route('digital.nine-ten') }}">Class Nine-Ten</a>
+                        <a href="{{ route('digital.seven') }}">Class Seven</a>
+                        <a href="{{ route('digital.eight') }}">Class Eight</a>
+                        <a href="{{ route('digital.nine-ten') }}">Class Nine-Ten</a>
                     </div>
                 </li>
 
                 <li class="menu-item">
                     <a href="#">Gallery <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
-                         <a href="{{ route('gallery.photo') }}">Photo Gallery</a>
-                                <a href="{{ route('gallery.video') }}">Video Gallery</a>
+                        <a href="{{ route('gallery.photo') }}">Photo Gallery</a>
+                        <a href="{{ route('gallery.video') }}">Video Gallery</a>
                     </div>
                 </li>
 
@@ -164,4 +163,3 @@
         }
     </script>
 </body>
-

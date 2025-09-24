@@ -15,12 +15,12 @@
 
         <!-- Filter Section -->
         <div class="filter-section">
-            <div class="filter-options">
+            {{-- <div class="filter-options">
                 <button class="filter-btn active">All News</button>
                 <button class="filter-btn">Achievements</button>
                 <button class="filter-btn">Events</button>
                 <button class="filter-btn">Announcements</button>
-            </div>
+            </div> --}}
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search news...">

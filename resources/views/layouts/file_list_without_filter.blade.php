@@ -15,13 +15,13 @@
 
         <!-- Filter Section -->
         <div class="filter-section">
-            <div class="filter-options">
+            {{-- <div class="filter-options">
                 <button class="filter-btn active">All Notices</button>
                 <button class="filter-btn">For Students</button>
                 <button class="filter-btn">For Parents</button>
                 <button class="filter-btn">For Staff</button>
                 <button class="filter-btn">Academic</button>
-            </div>
+            </div> --}}
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search notices...">
@@ -33,7 +33,7 @@
             <!-- Table Header -->
             <div class="table-header">
                 <div>Date</div>
-                <div>Notice Headline</div>
+                <div>Headline</div>
                 <div>Download</div>
             </div>
 

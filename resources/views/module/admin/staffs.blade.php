@@ -1,9 +1,9 @@
 @extends('layouts.emoloyee_list_type')
 
-@section('title', 'Faculty Directory')
+@section('title', 'Staff Directory')
 
-@section('page-title', 'Faculty Directory')
-@section('page-subtitle', 'Meet our dedicated teaching staff and faculty members')
+@section('page-title', 'Staff Directory')
+{{-- @section('page-subtitle', 'Meet our dedicated teaching staff and faculty members') --}}
 
 @section('teachers-content')
     <div class="teachers-grid">

@@ -1,8 +1,8 @@
 @extends('layouts.news_type_page')
 
-@section('title', 'News & Achievements')
+@section('title', 'Achievements')
 
-@section('page-title', 'News & Announcements')
+@section('page-title', 'Achievements')
 {{-- @section('page-subtitle', 'Stay updated with the latest news and achievements from ACPS') --}}
 
 @section('news-items')
@@ -14,10 +14,10 @@
         <div class="news-content">
             <div class="news-meta">
                 <div class="news-date"><i class="far fa-calendar"></i> October 15, 2023</div>
-                <div class="news-category">Achievement</div>
+                {{-- <div class="news-category">Achievement</div> --}}
             </div>
             <h2 class="news-headline">ACPS Wins National Education Award 2023</h2>
-            <p class="news-excerpt">Agrabad Cantonment Public School & College has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p>
+            <p class="news-excerpt">Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p>
             <a href="#" class="see-all-link" data-news="1">Read Full Story <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
@@ -34,13 +34,13 @@
                     <h2 class="full-news-title">ACPS Wins National Education Award 2023</h2>
                     <div class="news-meta">
                         <div class="news-date"><i class="far fa-calendar"></i> October 15, 2023</div>
-                        <div class="news-category">Achievement</div>
+                        {{-- <div class="news-category">Achievement</div> --}}
                     </div>
                 </div>
             </div>
             <img src="{{ asset('resources/images/test5.png') }}" alt="ACPS Wins National Award" class="full-news-image">
             <div class="full-news-text">
-                <p>Agrabad Cantonment Public School & College has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students. This prestigious award recognizes our commitment to excellence in education.</p>
+                <p>Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students. This prestigious award recognizes our commitment to excellence in education.</p>
 
                 <p>The award ceremony was held at the National Education Complex in Dhaka, where our Principal, Dr. Rahman, received the award from the Education Minister. This is the third consecutive year that ACPS has received this recognition.</p>
 

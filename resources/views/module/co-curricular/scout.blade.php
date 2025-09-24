@@ -6,22 +6,22 @@
     $sliderImages = [
         [
             'image' => 'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'ACPS Main Campus',
+            'title' => 'Scout Event 2021',
             'desc' => 'Our beautiful campus with state-of-the-art facilities'
         ],
         [
             'image' => 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Modern Classrooms',
+            'title' => 'Scout Event 2021',
             'desc' => 'Spacious and well-equipped learning environments'
         ],
         [
             'image' => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Science Laboratories',
+            'title' => 'Scout Event 2021',
             'desc' => 'Advanced labs for practical learning and experiments'
         ],
         [
             'image' => 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Library Resources',
+            'title' => 'Scout Event 2021',
             'desc' => 'Extensive collection of books and digital resources'
         ]
     ];
@@ -38,10 +38,10 @@
     @endforeach
 @endsection
 
-@section('headline', 'About Agrabad Cantonment Public School & College')
+@section('headline', 'Scout & Guide')
 
 @section('description')
-    <p>Agrabad Cantonment Public School & College (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
+    <p>Bawany Government  Adarsha Biddyalaya (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
 
     <p>Our campus spans over 10 acres and features state-of-the-art facilities including modern classrooms, well-equipped laboratories, a comprehensive library, and extensive sports facilities. We believe in nurturing not just academic excellence but also character, creativity, and critical thinking skills in our students.</p>
 

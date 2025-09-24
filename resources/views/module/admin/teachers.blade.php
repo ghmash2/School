@@ -3,7 +3,7 @@
 @section('title', 'Faculty Directory')
 
 @section('page-title', 'Faculty Directory')
-@section('page-subtitle', 'Meet our dedicated teaching staff and faculty members')
+{{-- @section('page-subtitle', 'Meet our dedicated teaching staff and faculty members') --}}
 
 @section('teachers-content')
     <div class="teachers-grid">

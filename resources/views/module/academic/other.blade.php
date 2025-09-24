@@ -2,7 +2,7 @@
 
 @section('title', 'Notices & Circulars')
 
-@section('page-title', 'Notices & Circulars')
+@section('page-title', 'Other Notices')
 @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff')
 
 @section('notices-content')

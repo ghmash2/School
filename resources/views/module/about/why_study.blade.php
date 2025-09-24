@@ -38,10 +38,10 @@
     @endforeach
 @endsection
 
-@section('headline', 'About Agrabad Cantonment Public School & College')
+@section('headline', 'Why Bawany Government  Adarsha Biddyalaya')
 
 @section('description')
-    <p>Agrabad Cantonment Public School & College (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
+    <p>Bawany Government  Adarsha Biddyalaya (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
 
     <p>Our campus spans over 10 acres and features state-of-the-art facilities including modern classrooms, well-equipped laboratories, a comprehensive library, and extensive sports facilities. We believe in nurturing not just academic excellence but also character, creativity, and critical thinking skills in our students.</p>
 

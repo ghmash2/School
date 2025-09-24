@@ -1,9 +1,9 @@
-@extends('layouts.file_list_type')
+@extends('layouts.file_list_without_filter')
 
 @section('title', 'Notices & Circulars')
 
-@section('page-title', 'Notices & Circulars')
-@section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff')
+@section('page-title', 'Academic Calendar')
+{{-- @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff') --}}
 
 @section('notices-content')
     <!-- Notice Item 1 -->

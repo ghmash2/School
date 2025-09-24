@@ -17,7 +17,7 @@
                 <div class="news-category">Achievement</div>
             </div>
             <h2 class="news-headline">ACPS Wins National Education Award 2023</h2>
-            <p class="news-excerpt">Agrabad Cantonment Public School & College has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p>
+            <p class="news-excerpt">Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p>
             <a href="#" class="see-all-link" data-news="1">Read Full Story <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
@@ -40,7 +40,7 @@
             </div>
             <img src="{{ asset('resources/images/test5.png') }}" alt="ACPS Wins National Award" class="full-news-image">
             <div class="full-news-text">
-                <p>Agrabad Cantonment Public School & College has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students. This prestigious award recognizes our commitment to excellence in education.</p>
+                <p>Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students. This prestigious award recognizes our commitment to excellence in education.</p>
 
                 <p>The award ceremony was held at the National Education Complex in Dhaka, where our Principal, Dr. Rahman, received the award from the Education Minister. This is the third consecutive year that ACPS has received this recognition.</p>
 
