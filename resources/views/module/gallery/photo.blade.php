@@ -60,24 +60,6 @@
         </div>
 
         <!-- Image 3 -->
-        <div class="gallery-item" data-category="sports" data-title="Basketball Tournament Finals">
-            <div class="media-container">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                     alt="Basketball Tournament"
-                     data-fullsize="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-                <span class="media-type">Image</span>
-                <div class="media-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-            <div class="media-caption">
-                <h3>Basketball Tournament Finals</h3>
-                <p>Our school team celebrating victory in the inter-school basketball tournament finals.</p>
-                <div class="media-date">
-                    <i class="far fa-calendar"></i> September 10, 2023
-                </div>
-            </div>
-        </div>
 
         <!-- Image 4 -->
         <div class="gallery-item" data-category="events" data-title="Annual Day Celebration">

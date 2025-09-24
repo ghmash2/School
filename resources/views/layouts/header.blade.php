@@ -82,7 +82,7 @@
                         {{-- <a href="{{ route('academic.suggestion') }}">Suggestion</a> --}}
                         <a href="{{ route('academic.exam-routine') }}">Exam Routine</a>
                         <a href="{{ route('academic.notice') }}">Notice</a>
-                        <a href="{{ route('academic.other') }}">Other</a>
+                        <a href="{{ route('academic.result') }}">Result</a>
                     </div>
                 </li>
 
@@ -92,7 +92,7 @@
                         <a href="{{ route('admission.circular') }}">Admission Circular</a>
                         <a href="{{ route('admission.prospectus') }}">Prospectus</a>
                         {{-- <a href="{{ route('admission.form') }}">Admission Form</a> --}}
-                        <a href="{{ route('admission.result') }}">Admission Result</a>
+                        <a href="{{ route('admission.admission-result') }}">Admission Result</a>
                         <a href="{{ route('admission.waiting-list') }}">Waiting List</a>
                         <a href="{{ route('admission.courses') }}">Courses</a>
                         <a href="{{ route('admission.admit-card') }}">Admit Card</a>

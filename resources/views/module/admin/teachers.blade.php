@@ -4,6 +4,13 @@
 
 @section('page-title', 'Faculty Directory')
 {{-- @section('page-subtitle', 'Meet our dedicated teaching staff and faculty members') --}}
+@section('filter')
+    <button class="filter-btn active">All Faculty</button>
+    <button class="filter-btn">Science Department</button>
+    <button class="filter-btn">Arts Department</button>
+    <button class="filter-btn">Commerce Department</button>
+    {{-- <button class="filter-btn">Senior Teachers</button> --}}
+@endsection
 
 @section('teachers-content')
     <div class="teachers-grid">

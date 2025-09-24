@@ -23,7 +23,7 @@
         <div class="gallery-item" data-category="sports" data-title="Annual Sports Day 2023">
             <div class="media-container">
                 <div class="video-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                          alt="Sports Day">
                     <div class="video-play-btn">
                         <i class="fas fa-play"></i>

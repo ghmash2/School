@@ -43,7 +43,7 @@ Route::prefix('academic')->name('academic.')->group(function () {
     Route::get('/suggestion', function () { return view('module.academic.suggestion'); })->name('suggestion');
     Route::get('/exam-routine', function () { return view('module.academic.exam-routine'); })->name('exam-routine');
     Route::get('/notice', function () { return view('module.academic.notice'); })->name('notice');
-    Route::get('/other', function () { return view('module.academic.other'); })->name('other');
+    Route::get('/result', function () { return view('module.academic.result'); })->name('result');
 });
 
 // Admission Routes
@@ -51,7 +51,7 @@ Route::prefix('admission')->name('admission.')->group(function () {
     Route::get('/circular', function () { return view('module.admission.circular'); })->name('circular');
     Route::get('/prospectus', function () { return view('module.admission.prospectus'); })->name('prospectus');
     Route::get('/form', function () { return view('module.admission.form'); })->name('form');
-    Route::get('/result', function () { return view('module.admission.result'); })->name('result');
+    Route::get('/admission-result', function () { return view('module.admission.result'); })->name('admission-result');
     Route::get('/waiting-list', function () { return view('module.admission.waiting-list'); })->name('waiting-list');
     Route::get('/course-program', function () { return view('module.admission.course-program'); })->name('courses');
     Route::get('/admit-card', function () { return view('module.admission.admit-card'); })->name('admit-card');

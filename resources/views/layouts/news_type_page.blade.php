@@ -23,7 +23,7 @@
             </div> --}}
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search news...">
+                <input type="text" placeholder="Search...">
             </div>
         </div>
 

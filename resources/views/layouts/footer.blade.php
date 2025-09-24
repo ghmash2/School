@@ -5,22 +5,23 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> Agrabad, Chittagong, Bangladesh</p>
-                    <p><i class="fas fa-phone"></i> +88 031 1234567</p>
-                    <p><i class="fas fa-envelope"></i> info@acps.edu.bd</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                    <p><i class="fas fa-phone"></i> +8801309107865</p>
+                    <p><i class="fas fa-envelope"></i> bav1979@yahoo.com</p>
+                    <p><i class="fas fa-clock"></i> Sun–Thu: 9:00 AM – 3:00 PM </p>
+
                 </div>
             </div>
 
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Academics</a></li>
-                    <li><a href="#">Admission</a></li>
-                    <li><a href="#">Results</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{route('home') }}">Home</a></li>
+                    <li><a href="{{route('about.glance') }}">About Us</a></li>
+                    <li><a href="{{route('academic.calendar') }}">Academics</a></li>
+                    <li><a href="{{route('admission.circular') }}">Admission</a></li>
+                    <li><a href="{{route('academic.result') }}">Results</a></li>
+
                 </ul>
             </div>
 
@@ -45,13 +46,13 @@
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
 
-                <div class="newsletter">
+                {{-- <div class="newsletter">
                     <h4>Subscribe to Newsletter</h4>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Your email address" required>
                         <button type="submit">Subscribe</button>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

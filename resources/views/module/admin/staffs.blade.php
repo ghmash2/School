@@ -13,8 +13,8 @@
                 <img src="https://i.pravatar.cc/150?img=1" alt="Dr. Sarah Johnson" class="teacher-image">
                 <div class="teacher-basic-info">
                     <h3>Dr. Sarah Johnson</h3>
-                    <div class="teacher-designation">Head of Science Department</div>
-                    <span class="teacher-subject">Physics</span>
+                    <div class="teacher-designation">Head of Resistrar</div>
+                    <span class="teacher-subject">Registrar</span>
                 </div>
             </div>
             <div class="teacher-details">
@@ -31,11 +31,15 @@
                     <div class="detail-value">+1 (555) 123-4567</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label"><i class="fas fa-id-card"></i> Teacher ID</div>
-                    <div class="detail-value"><span class="teacher-id">TSC-2015-001</span></div>
+                    <div class="detail-label"><i class="fas fa-id-card"></i> Staff ID</div>
+                    <div class="detail-value"><span class="teacher-id">SSC-2015-001</span></div>
                 </div>
             </div>
         </div>
+
+
+
+        
 
         <!-- Teacher Card 2 -->
         <div class="teacher-card">
@@ -43,8 +47,8 @@
                 <img src="https://i.pravatar.cc/150?img=2" alt="Mr. Robert Chen" class="teacher-image">
                 <div class="teacher-basic-info">
                     <h3>Mr. Robert Chen</h3>
-                    <div class="teacher-designation">Senior Mathematics Teacher</div>
-                    <span class="teacher-subject">Mathematics</span>
+                    <div class="teacher-designation">Senior Examiner</div>
+                    <span class="teacher-subject">Exam</span>
                 </div>
             </div>
             <div class="teacher-details">
@@ -61,7 +65,7 @@
                     <div class="detail-value">+1 (555) 234-5678</div>
                 </div>
                 <div class="detail-row">
-                    <div class="detail-label"><i class="fas fa-id-card"></i> Teacher ID</div>
+                    <div class="detail-label"><i class="fas fa-id-card"></i> Staff ID</div>
                     <div class="detail-value"><span class="teacher-id">TSC-2018-015</span></div>
                 </div>
             </div>

@@ -15,16 +15,10 @@
 
         <!-- Filter Section -->
         <div class="filter-section">
-            <div class="filter-options">
-                <button class="filter-btn active">All Faculty</button>
-                <button class="filter-btn">Science Department</button>
-                <button class="filter-btn">Arts Department</button>
-                <button class="filter-btn">Administration</button>
-                <button class="filter-btn">Senior Teachers</button>
-            </div>
+            <div class="filter-options">@yield('filter')</div>
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search teachers by name, subject, or ID...">
+                <input type="text" placeholder="Search by name, dept. or ID...">
             </div>
         </div>
 

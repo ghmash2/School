@@ -22,13 +22,19 @@ body {
 /* Image Slider */
 .image-slider {
     position: relative;
-    height: 400px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    max-width: 400px;
+    max-width: 300px;
+    height: auto; /* remove fixed height */
 }
+.image-slider img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Page Content */
 .page-content {
     background-color: white;
