@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                style="background-image: url('{{ asset('resources/images/school_buiding.avif') }}');">
                 <div class="slide-content">
                     <h2>Extracurricular Activities</h2>
                     <p>We believe in holistic development through sports, arts, and cultural activities.</p>
@@ -49,7 +49,7 @@
         <section class="about-section">
             <div class="about-container">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1524178239889-8cf4d46cf15e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    <img src="{{ asset('resources/images/school_buiding.avif') }}"
                         alt="ACPS School Building">
                 </div>
                 <div class="about-content">
