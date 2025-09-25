@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
             <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                style="background-image: url('{{ asset('resources/images/test5.png') }}');">
                 <div class="slide-content">
                     <h2>Academic Excellence</h2>
                     <p>Our students consistently achieve outstanding results in national examinations.</p>
@@ -278,7 +278,7 @@
             // Auto-advance slides every 5 seconds
             setInterval(() => {
                 showSlide(currentSlide + 1);
-            }, 5000);
+            }, 3000);
 
             // Newsletter form submission
             const newsletterForm = document.querySelector('.newsletter-form');

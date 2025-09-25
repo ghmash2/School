@@ -138,7 +138,9 @@
                         <a href="{{ route('gallery.video') }}">Video Gallery</a>
                     </div>
                 </li>
-
+                <li class="menu-item">
+                    <a href="{{ route('showLogin') }}">Login </a>
+                </li>
             </ul>
         </div>
     </nav>
