@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Psy\Util\Str;
 
-class TeacherController extends Controller
-{
-    /**
+class StaffController extends Controller
+{ /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $teachers = Teacher::latest()->paginate(10);
+        $staffs = Staff::latest()->paginate(10);
 
-        return view('panel.teachers.index', compact('teachers'));
+        return view('panel.staffs.index', compact('staffs'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('panel.teachers.create');
+        return view('panel.staffs.create');
     }
 
     /**
@@ -33,9 +33,9 @@ class TeacherController extends Controller
     {
         $validated = $request->validate([
             'name' => 'string|max:255',
-            'email' => 'email|unique:teachers,email',
+            'email' => 'email|unique:staffs,email',
             'subject' => 'string|max:255',
-            'phone' => 'string|max:20|unique:teachers,phone',
+            'phone' => 'string|max:20|unique:staffs,phone',
             'join_date' => 'date',
             'address' => 'nullable|string',
             'image' => 'nullable|image|max:15048',
@@ -50,16 +50,16 @@ class TeacherController extends Controller
             $validated['image'] = $imagePath;
         }
 
-        Teacher::create($validated);
+        Staff::create($validated);
 
-        return redirect()->route('panel.teachers.index')
-            ->with('success', 'Teacher created successfully.');
+        return redirect()->route('panel.staffs.index')
+            ->with('success', 'staff created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Teacher $teacher)
+    public function show(Staff $staff)
     {
         //
     }
@@ -67,23 +67,23 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Teacher $teacher)
+    public function edit(Staff $staff)
     {
-        return view('panel.teachers.edit', compact('teacher'));
+        return view('panel.staffs.edit', compact('staff'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, Staff $staff)
     {
         //dd($request->all());
            try {
         $validated = $request->validate([
         'name' => 'nullable|string|max:255',
-        'email' => 'nullable|email|unique:teachers,email,' . $teacher->id,
+        'email' => 'nullable|email|unique:staffs,email,' . $staff->id,
         'subject' => 'nullable|string|max:255',
-        'phone' => 'nullable|string|max:20|unique:teachers,phone,' . $teacher->id,
+        'phone' => 'nullable|string|max:20|unique:staffs,phone,' . $staff->id,
         'join_date' => 'nullable|date',
         'address' => 'nullable|string',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -99,30 +99,30 @@ class TeacherController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image
-            if ($teacher->image) {
-                Storage::disk('public')->delete($teacher->image);
+            if ($staff->image) {
+                Storage::disk('public')->delete($staff->image);
             }
             $validated['image'] = $request->file('image')->store('images', 'public');
         }
 
-        $teacher->update($validated);
+        $staff->update($validated);
 
-        return redirect()->route('panel.teachers.index')
-            ->with('success', 'Teacher updated successfully.');
+        return redirect()->route('panel.staffs.index')
+            ->with('success', 'staff updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Staff $staff)
     {
-        if ($teacher->image) {
-            Storage::disk('public')->delete($teacher->image);
+        if ($staff->image) {
+            Storage::disk('public')->delete($staff->image);
         }
 
-        $teacher->delete();
+        $staff->delete();
 
-        return redirect()->route('panel.teachers.index')
-            ->with('success', 'Teacher deleted successfully.');
+        return redirect()->route('panel.staffs.index')
+            ->with('success', 'staff deleted successfully.');
     }
 }

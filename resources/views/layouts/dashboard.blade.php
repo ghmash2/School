@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('admin.staff.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.staffs.index') }}" class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}">
                             <i class="fas fa-user-tie"></i> <span>Manage Staff</span>
                         </a>
                     </li>

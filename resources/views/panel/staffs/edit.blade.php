@@ -1,29 +1,29 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Edit Teacher')
-@section('page-title', 'Edit Teacher')
+@section('title', 'Edit Employee')
+@section('page-title', 'Edit Employee')
 
 @section('content')
     <div class="section-header">
-        <h2>Edit Teacher: {{ $teacher->name }}</h2>
-        <a href="{{ route('panel.teachers.index') }}" class="btn btn-outline">
+        <h2>Edit Employee: {{ $staff->name }}</h2>
+        <a href="{{ route('panel.staffs.index') }}" class="btn btn-outline">
             <i class="fas fa-arrow-left"></i> Back to List
         </a>
     </div>
 
     <div class="card">
         <div class="card-header">
-            <h3>Teacher Information</h3>
+            <h3>Employee Information</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('panel.teachers.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('panel.staffs.update', $staff->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $teacher->name) }}"
+                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $staff->name) }}"
                             required>
                         @error('name')
                             <span class="error">{{ $message }}</span>
@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $teacher->email) }}"
+                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $staff->email) }}"
                             required>
                         @error('email')
                             <span class="error">{{ $message }}</span>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" value="{{ old('phone' , $teacher->phone) }}"
+                        <input type="tel" id="phone" name="phone" class="form-control" value="{{ old('phone' , $staff->phone) }}"
                             required>
                         @error('phone')
                             <span class="error">{{ $message }}</span>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="subject">Subject *</label>
                         <input type="text" id="subject" name="subject" class="form-control"
-                            value="{{ old('subject' , $teacher->subject) }}" required>
+                            value="{{ old('subject' , $staff->subject) }}" required>
                         @error('subject')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="join_date">Join Date *</label>
                         <input type="date" id="join_date" name="join_date" class="form-control"
-                            value="{{ old('join_date', $teacher->join_date  ) }}" required>
+                            value="{{ old('join_date', $staff->join_date  ) }}" required>
                         @error('join_date')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -68,7 +68,7 @@
                     <div class="form-group">
                         <label for="retire_date">Retire Date </label>
                         <input type="date" id="retire_date" name="retire_date" class="form-control"
-                            value="{{ old('retire_date', $teacher->retire_date) }}">
+                            value="{{ old('retire_date', $staff->retire_date) }}">
                         {{-- @error('retire_date')
                             <span class="error">{{ $message }}</span>
                         @enderror --}}
@@ -79,7 +79,7 @@
                     <div class="form-group">
                         <label for="designation">Designation *</label>
                         <input type="text" id="designation" name="designation" class="form-control"
-                            value="{{ old('designation' , $teacher->designation) }}" required>
+                            value="{{ old('designation' , $staff->designation) }}" required>
                         @error('designation')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -87,7 +87,7 @@
                     <div class="form-group">
                         <label for="dept">dept </label>
                         <input type="text" id="dept" name="dept" class="form-control"
-                            value="{{ old('dept' , $teacher->dept) }}">
+                            value="{{ old('dept' , $staff->dept) }}">
                         @error('dept')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <label for="age">Age *</label>
                         <input type="text" id="age" name="age" class="form-control"
-                            value="{{ old('age' , $teacher->age) }}" required>
+                            value="{{ old('age' , $staff->age) }}" required>
                         @error('age')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -104,14 +104,14 @@
                 <div class="form-row" style="grid-template-columns: 2fr 1fr;">
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <textarea id="address" name="address" class="form-control" rows="2">{{ old('address' , $teacher->address) }}</textarea>
+                        <textarea id="address" name="address" class="form-control" rows="2">{{ old('address' , $staff->address) }}</textarea>
                         @error('address')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="image">image</label>
-                        <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ old('image' , $teacher->image) }}">
+                        <input type="file" id="image" name="image" class="form-control" accept="image/*" value="{{ old('image' , $staff->image) }}">
                         @error('image')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -120,9 +120,9 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Update Teacher
+                        <i class="fas fa-save"></i> Update Employee
                     </button>
-                    <a href="{{ route('panel.teachers.index') }}" class="btn btn-outline">Cancel</a>
+                    <a href="{{ route('panel.staffs.index') }}" class="btn btn-outline">Cancel</a>
                 </div>
             </form>
         </div>
