@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('panel.gallery.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.gallery-images.index') }}" class="{{ request()->routeIs('panel.gallery-images.*') ? 'active' : '' }}">
                             <i class="fas fa-images"></i> <span>Manage Gallery</span>
                         </a>
                     </li>

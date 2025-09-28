@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TeacherController;
@@ -197,7 +198,7 @@ Route::middleware('auth')->group(function () {
          Route::resource('staffs', StaffController::class);
          Route::resource('contents', ContentController::class);
          Route::resource('notices', NoticeController::class);
-        // Route::resource('gallery', GalleryController::class);
+         Route::resource('gallery-images', GalleryImageController::class);
         // Route::resource('others', OtherController::class);
 
     });
