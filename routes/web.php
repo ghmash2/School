@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -194,8 +195,8 @@ Route::middleware('auth')->group(function () {
         // Resource routes for each section
          Route::resource('teachers', TeacherController::class);
          Route::resource('staffs', StaffController::class);
-         Route::resource('content', ContentController::class);
-        // Route::resource('notices', NoticeController::class);
+         Route::resource('contents', ContentController::class);
+         Route::resource('notices', NoticeController::class);
         // Route::resource('gallery', GalleryController::class);
         // Route::resource('others', OtherController::class);
 

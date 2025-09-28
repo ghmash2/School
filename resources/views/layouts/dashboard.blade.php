@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('admin.content.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.contents.index') }}" class="{{ request()->routeIs('admin.content.*') ? 'active' : '' }}">
                             <i class="fas fa-file-alt"></i> <span>Manage Content</span>
                         </a>
                     </li>
