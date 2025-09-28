@@ -6,7 +6,6 @@
 @section('content')
 {{-- <div class="section-header">
     <h2>Manage Teachers</h2>
-
 </div> --}}
 
 <div class="card">
