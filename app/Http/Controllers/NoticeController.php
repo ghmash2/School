@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class NoticeController extends Controller
 {
@@ -12,7 +14,8 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        //
+        $notices = Notice::with('notice_files')->latest()->paginate(10);
+        return view('panel.notices.index', compact('notices'));
     }
 
     /**
@@ -20,7 +23,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel.notices.create');
     }
 
     /**
@@ -28,7 +31,34 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'section' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:notices,title',
+            'tag' => 'nullable|string|max:255',
+            'published_date' => 'required|date',
+            'published_by' => 'required|string|max:255',
+            'description' => 'required|string',
+            'slug' => 'nullable|string|max:255|unique:notices,slug',
+            'files.*' => 'nullable|file|max:15048', // Max 15MB per file
+        ]);
+        if (empty($validated['slug'])) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
+        $notice = Notice::create($validated);
+
+        if ($request->hasFile('files')) {
+            $subdirectory = 'notices/'.$validated['title'];
+            foreach ($request->file('files') as $file) {
+                $filePath = $file->store($subdirectory, 'public');
+                // Assuming you have a NoticeFile model and notice_files table
+                \App\Models\NoticeFile::create([
+                    'notice_id' => $notice->id,
+                    'file' => $filePath,
+                ]);
+            }
+        }
+
+        return redirect()->route('panel.notices.index')->with('success', 'Notice created successfully.');
     }
 
     /**
@@ -44,7 +74,7 @@ class NoticeController extends Controller
      */
     public function edit(Notice $notice)
     {
-        //
+        return view('panel.notices.edit', compact('notice'));
     }
 
     /**
@@ -52,7 +82,43 @@ class NoticeController extends Controller
      */
     public function update(Request $request, Notice $notice)
     {
-        //
+        $validated = $request->validate([
+            'section' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:notices,title,'.$notice->id,
+            'tag' => 'nullable|string|max:255',
+            'published_date' => 'required|date',
+            'published_by' => 'required|string|max:255',
+            'description' => 'required|string',
+            'slug' => 'nullable|string|max:255|unique:notices,slug,'.$notice->id,
+            'files.*' => 'nullable|file|max:15048', // Max 15MB per file
+        ]);
+        if (empty($validated['slug'])) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
+        $notice->update($validated);
+
+        if ($request->hasFile('files')) {
+            $subdirectory = 'notices/'.$validated['title'];
+            // Delete data from Storage
+            $oldFiles = \App\Models\NoticeFile::where('notice_id', $notice->id)->get();
+            foreach ($oldFiles as $oldFile) {
+                if (Storage::disk('public')->exists($oldFile->file)) {
+                    Storage::disk('public')->delete($oldFile->file);
+                }
+            }
+            // Delete existing files if needed
+            $notice->notice_files()->delete();
+            foreach ($request->file('files') as $file) {
+                $filePath = $file->store($subdirectory, 'public');
+                // Assuming you have a NoticeFile model and notice_files table
+                \App\Models\NoticeFile::create([
+                    'notice_id' => $notice->id,
+                    'file' => $filePath,
+                ]);
+            }
+        }
+
+        return redirect()->route('panel.notices.index')->with('success', 'Notice updated successfully.');
     }
 
     /**
@@ -60,6 +126,16 @@ class NoticeController extends Controller
      */
     public function destroy(Notice $notice)
     {
-        //
+        $notice->delete();
+        // Delete associated files from storage if necessary
+        $oldFiles = \App\Models\NoticeFile::where('notice_id', $notice->id)->get();
+        foreach ($oldFiles as $oldFile) {
+            if (Storage::disk('public')->exists($oldFile->file)) {
+                Storage::disk('public')->delete($oldFile->file);
+            }
+        }
+        // Delete associated files from database
+        $notice->notice_files()->delete();
+        return redirect()->route('panel.notices.index')->with('success', 'Notice deleted successfully.');
     }
 }

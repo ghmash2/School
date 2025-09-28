@@ -30,27 +30,27 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('panel.staffs.index') }}" class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.staffs.index') }}" class="{{ request()->routeIs('panel.staffs.*') ? 'active' : '' }}">
                             <i class="fas fa-user-tie"></i> <span>Manage Staff</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('panel.contents.index') }}" class="{{ request()->routeIs('admin.content.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.contents.index') }}" class="{{ request()->routeIs('panel.content.*') ? 'active' : '' }}">
                             <i class="fas fa-file-alt"></i> <span>Manage Content</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('admin.notices.*') ? 'active' : '' }}">
+                        <a href="{{ route('panel.notices.index') }}" class="{{ request()->routeIs('panel.notices.*') ? 'active' : '' }}">
                             <i class="fas fa-bullhorn"></i> <span>Manage Notice</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
+                        <a href="#" class="{{ request()->routeIs('panel.gallery.*') ? 'active' : '' }}">
                             <i class="fas fa-images"></i> <span>Manage Gallery</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->routeIs('admin.others.*') ? 'active' : '' }}">
+                        <a href="#" class="{{ request()->routeIs('panel.others.*') ? 'active' : '' }}">
                             <i class="fas fa-cogs"></i> <span>Others</span>
                         </a>
                     </li>

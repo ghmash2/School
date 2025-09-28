@@ -50,7 +50,7 @@ class ContentController extends Controller
             foreach ($request->file('images') as $image) {
                 $imagePath = $image->store($subdirectory, 'public');
                 // Assuming you have a ContentImage model and content_images table
-                \App\Models\ContentImage::create([
+                ContentImage::create([
                     'content_id' => $content->id,
                     'image' => $imagePath,
                 ]);
@@ -91,19 +91,19 @@ class ContentController extends Controller
 
         if ($request->hasFile('images')) {
             // Delete old images and their files from storage
-            $oldImages = \App\Models\ContentImage::where('content_id', $content->id)->get();
+            $oldImages = ContentImage::where('content_id', $content->id)->get();
             foreach ($oldImages as $oldImage) {
                 if (Storage::disk('public')->exists($oldImage->image)) {
                     Storage::disk('public')->delete($oldImage->image);
                 }
             }
-            \App\Models\ContentImage::where('content_id', $content->id)->delete();
+            ContentImage::where('content_id', $content->id)->delete();
             $subdirectory = 'images/'.$validated['title'];
 
             foreach ($request->file('images') as $image) {
                 $imagePath = $image->store($subdirectory, 'public');
                 // Assuming you have a ContentImage model and content_images table
-                \App\Models\ContentImage::create([
+                ContentImage::create([
                     'content_id' => $content->id,
                     'image' => $imagePath,
                 ]);
