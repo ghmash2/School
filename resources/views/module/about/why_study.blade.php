@@ -1,31 +1,12 @@
 @extends('layouts.description_type_page')
 
-@section('title', 'About Us')
-
 @php
-    $sliderImages = [
-        [
-            'image' => 'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'ACPS Main Campus',
-            'desc' => 'Our beautiful campus with state-of-the-art facilities'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Modern Classrooms',
-            'desc' => 'Spacious and well-equipped learning environments'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Science Laboratories',
-            'desc' => 'Advanced labs for practical learning and experiments'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-            'title' => 'Library Resources',
-            'desc' => 'Extensive collection of books and digital resources'
-        ]
-    ];
+    $contentController = new \App\Http\Controllers\ContentController();
+    $content = $contentController->view('Why Study at BGAB');
+    $sliderImages = $content->content_images ? $content->content_images->all() : [];
+
 @endphp
+@section('title', 'About')
 
 @section('slider-content')
     @foreach($sliderImages as $index => $slide)

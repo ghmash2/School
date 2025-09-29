@@ -21,7 +21,6 @@
             <a href="#" class="see-all-link" data-news="1">Read Full Story <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
-
     <!-- Additional news items would be here -->
 @endsection
 

@@ -6,7 +6,9 @@ use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Event\Code\Test;
 
 Route::get('/', function () {
     return view('welcome');
@@ -181,6 +183,8 @@ Route::prefix('gallery')->name('gallery.')->group(function () {
         return view('module.gallery.video');
     })->name('video');
 });
+
+Route::get('/test', [TestController::class, 'test'])->name('test');
 
 // Admin Panel Routes
 Route::middleware('auth')->group(function () {

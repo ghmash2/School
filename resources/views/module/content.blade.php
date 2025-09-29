@@ -1,12 +1,35 @@
 @extends('layouts.description_type_page')
-
 @php
     $contentController = new \App\Http\Controllers\ContentController();
-    $content = $contentController->view('Why Study at BGAB');
-    $sliderImages = $content->content_images ? $content->content_images->all() : [];
-
+    
 @endphp
-@section('title', 'About')
+@section('title', 'About Us')
+
+@php
+
+    $sliderImages = [
+        [
+            'image' => 'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            'title' => 'ACPS Main Campus',
+            'desc' => 'Our beautiful campus with state-of-the-art facilities'
+        ],
+        [
+            'image' => 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            'title' => 'Modern Classrooms',
+            'desc' => 'Spacious and well-equipped learning environments'
+        ],
+        [
+            'image' => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            'title' => 'Science Laboratories',
+            'desc' => 'Advanced labs for practical learning and experiments'
+        ],
+        [
+            'image' => 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            'title' => 'Library Resources',
+            'desc' => 'Extensive collection of books and digital resources'
+        ]
+    ];
+@endphp
 
 @section('slider-content')
     @foreach($sliderImages as $index => $slide)
@@ -19,7 +42,7 @@
     @endforeach
 @endsection
 
-@section('headline', 'Scout & Guide')
+@section('headline', 'About Bawany Government  Adarsha Biddyalaya')
 
 @section('description')
     <p>Bawany Government  Adarsha Biddyalaya (ACPS) is a premier educational institution established in 1985 with a vision to provide quality education to the children of armed forces personnel and civilians in the Chittagong region. Over the years, we have grown into one of the most prestigious educational institutions in Bangladesh, known for our academic excellence and holistic development approach.</p>
@@ -42,22 +65,3 @@
 
     <p>Our dedicated faculty members are highly qualified and committed to providing personalized attention to each student. We maintain a low student-teacher ratio to ensure effective learning and individual growth.</p>
 @endsection
-
-{{-- @section('stats')
-    <div class="stat-item">
-        <div class="stat-number">2,500+</div>
-        <div class="stat-label">Students</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-number">150+</div>
-        <div class="stat-label">Faculty Members</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-number">35+</div>
-        <div class="stat-label">Years of Excellence</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">Pass Rate</div>
-    </div>
-@endsection --}}

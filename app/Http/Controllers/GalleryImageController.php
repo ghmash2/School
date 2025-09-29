@@ -33,14 +33,16 @@ class GalleryImageController extends Controller
             'tag' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image.*' => 'required|image',
        ]);
+
+         $count = 1;
          foreach ($request->file('image') as $image) {
-            $count=1;
+
             $imagePath = $image->store('gallery', 'public');
             GalleryImage::create([
                 'tag' => $validated['tag'],
-                'title' => $validated['title'].'-'.$count++,
+                'title' => $validated['title'].'-'. $count++,
                 'description' => $validated['description'],
                 'image' => $imagePath,
             ]);
@@ -75,7 +77,7 @@ class GalleryImageController extends Controller
             'tag' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image.*' => 'required|image',
        ]);
 
        if ($request->hasFile('image')) {

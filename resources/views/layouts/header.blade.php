@@ -135,7 +135,8 @@
                     <a href="#">Gallery <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown">
                         <a href="{{ route('gallery.photo') }}">Photo Gallery</a>
-                        <a href="{{ route('gallery.video') }}">Video Gallery</a>
+                        {{-- <a href="{{ route('gallery.video') }}">Video Gallery</a> --}}
+                        <a href="{{ route('test') }}">Test</a>
                     </div>
                 </li>
                 <li class="menu-item">

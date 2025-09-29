@@ -64,7 +64,9 @@ class ContentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Content $content) {}
+    public function show(Content $content) {
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -121,15 +123,21 @@ class ContentController extends Controller
     {
         $content->delete();
         // Delete associated images and their files from storage
-        $oldImages = \App\Models\ContentImage::where('content_id', $content->id)->get();
+        $oldImages = ContentImage::where('content_id', $content->id)->get();
         foreach ($oldImages as $oldImage) {
             if (Storage::disk('public')->exists($oldImage->image)) {
                 Storage::disk('public')->delete($oldImage->image);
             }
         }
-        \App\Models\ContentImage::where('content_id', $content->id)->delete();
+        ContentImage::where('content_id', $content->id)->delete();
 
         return redirect()->route('panel.contents.index')
             ->with('success', 'Content deleted successfully.');
+    }
+
+    public function view($title)
+    {
+        $content = Content::where('title', $title)->with('content_images')->firstOrFail();
+        return $content;
     }
 }
