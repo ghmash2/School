@@ -16,6 +16,7 @@ class ContentController extends Controller
     public function index()
     {
         $contents = Content::with('content_images')->latest()->paginate(10);
+
         return view('panel.contents.index', compact('contents'));
     }
 
@@ -64,9 +65,7 @@ class ContentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Content $content) {
-
-    }
+    public function show(Content $content) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -138,28 +137,43 @@ class ContentController extends Controller
     public function view($title)
     {
         $content = Content::where('title', $title)->with('content_images')->firstOrFail();
+
         return $content;
     }
+
     public function viewAll($title)
     {
         $content = Content::where('title', $title)->with('content_images')->latest()->get();
+
         return $content;
     }
+
     public function findLatestContents()
     {
         $content = Content::with('content_images')->latest()->limit(5)->get();
+
         return $content;
     }
+
     public function findAboutUs()
     {
         $content = Content::where('title', 'At a Glance')->with('content_images')->latest()->limit(1)->get();
+
         return $content;
     }
+
     public function findHomeImage()
     {
-        $content = Content::where('title', 'At a Glance')->with('content_images')->latest()->limit(1)->get();
-        $images = $content[0]->content_images[0]->image;
+        // Find the Content item
+        $content = Content::where('title', 'At a Glance')->with('content_images')->latest()->first();
+
+        // Check if content was found
+        if ($content) {
+            // Pluck the 'image' attribute from the collection of images
+            $images = $content->content_images->pluck('image');
+            //dd($images);
+        }
+
         return $images;
     }
-
 }

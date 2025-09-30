@@ -4,6 +4,9 @@
     <title>ACPS School - Home</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
+@php
+
+@endphp
 @section('content')
     <!-- Main Content -->
     <main class="main-content">
@@ -39,22 +42,29 @@
         </section>
 
         <!-- About Section -->
-        <section class="about-section">
+        <section class="about-section" id="aboutSection">
             <div class="about-container">
                 <div class="about-image">
-                    <img src="{{ asset('resources/images/school_buiding.avif') }}" alt="ACPS School Building">
+                    <img src="{{ asset('resources/images/school_buiding.avif') }}" alt="ACPS School Building"
+                        id="aboutImage">
                 </div>
                 <div class="about-content">
-                    <h2>About ACPS</h2>
-                    <p>Bawany Government Adarsha Biddyalaya is a premier educational institution established in 1985. With a
-                        rich history of academic excellence, we have been shaping young minds to become responsible citizens
-                        and future leaders.</p>
-                    <p>Our campus features state-of-the-art facilities including modern classrooms, well-equipped
-                        laboratories, a comprehensive library, and extensive sports facilities. We believe in holistic
-                        education that nurtures intellectual, physical, and emotional growth.</p>
-                    <p>Our dedicated faculty members are committed to providing quality education and personalized attention
-                        to each student. We follow a student-centric approach that encourages critical thinking, creativity,
-                        and character development.</p>
+                    <h2 id="aboutTitle">About ACPS</h2>
+                    <div id="aboutContent">
+                        <p>Bawany Government Adarsha Biddyalaya is a premier educational institution established in 1985.
+                            With a
+                            rich history of academic excellence, we have been shaping young minds to become responsible
+                            citizens
+                            and future leaders.</p>
+                        <p>Our campus features state-of-the-art facilities including modern classrooms, well-equipped
+                            laboratories, a comprehensive library, and extensive sports facilities. We believe in holistic
+                            education that nurtures intellectual, physical, and emotional growth.</p>
+                        <p>Our dedicated faculty members are committed to providing quality education and personalized
+                            attention
+                            to each student. We follow a student-centric approach that encourages critical thinking,
+                            creativity,
+                            and character development.</p>
+                    </div>
                     <a href="{{ route('about.glance') }}" class="btn">Read More</a>
                 </div>
             </div>
@@ -67,7 +77,7 @@
                 <div class="notice-board">
                     <div class="notice-header">
                         <h3>Latest Notices</h3>
-                        <a href="#" class="view-all">View All</a>
+                        <a href="{{ route('latest-notices') }}" class="view-all">View All</a>
                     </div>
                     <ul class="notice-list" id="noticeList">
                         <!-- Notices will be dynamically added here -->
@@ -128,73 +138,95 @@
             </div>
         </section>
     </main>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // Global variables for slider
+    let currentSlide = 0;
+    let slideInterval;
+    let slides = [];
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fetch and display top notices (marquee)
-            fetchTopNotices();
+    function showSlide(n) {
+        if (slides.length === 0) return;
 
-            // Fetch and display latest notices
-            fetchLatestNotices();
+        slides.forEach(slide => slide.classList.remove('active'));
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
 
-            // Fetch and display events
-            fetchEvents();
+    function startSlider() {
+        // Clear existing interval if any
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
 
-            // Fetch and display home images for slider
-            fetchHomeImages();
+        // Get slides after they're loaded
+        slides = document.querySelectorAll('.hero-slider .slide');
 
-            // Mobile menu toggle
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-                });
-            }
-
-            // Simple slider functionality
-            let currentSlide = 0;
-            let slides = document.querySelectorAll('.slide');
-
-            function showSlide(n) {
-                if (slides.length === 0) return;
-
-                slides.forEach(slide => slide.classList.remove('active'));
-                currentSlide = (n + slides.length) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
+        if (slides.length > 0) {
+            // Ensure first slide is active
+            showSlide(0);
 
             // Auto-advance slides every 5 seconds
-            let slideInterval = setInterval(() => {
+            slideInterval = setInterval(() => {
                 showSlide(currentSlide + 1);
             }, 5000);
+        }
+    }
 
-            // Newsletter form submission
-            const newsletterForm = document.querySelector('.newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('input[type="email"]').value;
-                    if (email) {
-                        alert('Thank you for subscribing to our newsletter!');
-                        this.reset();
-                    }
-                });
-            }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch and display top notices (marquee)
+        fetchTopNotices();
+
+        // Fetch and display latest notices
+        fetchLatestNotices();
+
+        // Fetch and display events
+        fetchEvents();
+
+        // Fetch and display about section
+        fetchAboutUs();
+
+        // Fetch home images for slider LAST, then initialize slider
+        fetchHomeImages().then(() => {
+            // Initialize slider after images are loaded
+            setTimeout(() => {
+                startSlider();
+            }, 100);
         });
 
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                }
+            });
+        }
+    });
         // Function to fetch top notices for marquee
         async function fetchTopNotices() {
             try {
-                const response = await axios.get('{{ route("latest-notices") }}');
+                const response = await axios.get('{{ route('latest-notices') }}');
                 const notices = response.data;
 
                 const topNoticeContent = document.getElementById('topNoticeContent');
                 topNoticeContent.innerHTML = '';
 
-                if (notices.length > 0) {
+                if (notices && notices.length > 0) {
                     notices.forEach((notice) => {
                         const noticeLink = document.createElement('a');
                         noticeLink.className = 'top-notice-item';
@@ -218,20 +250,21 @@
                 }
             } catch (error) {
                 console.error('Error fetching top notices:', error);
-                document.getElementById('topNoticeContent').innerHTML = '<a class="top-notice-item">Unable to load notices</a>';
+                document.getElementById('topNoticeContent').innerHTML =
+                    '<a class="top-notice-item">Unable to load notices</a>';
             }
         }
 
         // Function to fetch latest notices for notice board
         async function fetchLatestNotices() {
             try {
-                const response = await axios.get('{{ route("latest-notices") }}');
+                const response = await axios.get('{{ route('latest-notices') }}');
                 const notices = response.data;
 
                 const noticeList = document.getElementById('noticeList');
                 noticeList.innerHTML = '';
 
-                if (notices.length > 0) {
+                if (notices && notices.length > 0) {
                     // Show only first 5 notices
                     notices.slice(0, 5).forEach((notice) => {
                         const listItem = document.createElement('li');
@@ -255,24 +288,26 @@
                         noticeList.appendChild(listItem);
                     });
                 } else {
-                    noticeList.innerHTML = '<li class="notice-item"><a href="#"><i class="fas fa-bullhorn"></i><span>No recent notices</span></a></li>';
+                    noticeList.innerHTML =
+                        '<li class="notice-item"><a href="#"><i class="fas fa-bullhorn"></i><span>No recent notices</span></a></li>';
                 }
             } catch (error) {
                 console.error('Error fetching latest notices:', error);
-                document.getElementById('noticeList').innerHTML = '<li class="notice-item"><a href="#"><i class="fas fa-bullhorn"></i><span>Unable to load notices</span></a></li>';
+                document.getElementById('noticeList').innerHTML =
+                    '<li class="notice-item"><a href="#"><i class="fas fa-bullhorn"></i><span>Unable to load notices</span></a></li>';
             }
         }
 
         // Function to fetch events
         async function fetchEvents() {
             try {
-                const response = await axios.get('{{ route("latest-contents") }}');
+                const response = await axios.get('{{ route('latest-contents') }}');
                 const events = response.data;
 
                 const eventsList = document.getElementById('eventsList');
                 eventsList.innerHTML = '';
 
-                if (events.length > 0) {
+                if (events && events.length > 0) {
                     // Show only first 3 events
                     events.slice(0, 3).forEach((event) => {
                         const eventItem = document.createElement('div');
@@ -284,7 +319,9 @@
                         // Parse date or use current date as fallback
                         const eventDateObj = event.event_date ? new Date(event.event_date) : new Date();
                         const day = eventDateObj.getDate();
-                        const month = eventDateObj.toLocaleString('default', { month: 'short' });
+                        const month = eventDateObj.toLocaleString('default', {
+                            month: 'short'
+                        });
 
                         const dayDiv = document.createElement('div');
                         dayDiv.className = 'day';
@@ -345,50 +382,93 @@
         }
 
         // Function to fetch home images for slider
-        async function fetchHomeImages() {
+        // Function to fetch home images for slider - SIMPLE VERSION FOR STRING ARRAY
+async function fetchHomeImages() {
+        try {
+            const response = await axios.get('{{ route('home-image') }}');
+            const images = response.data;
+            const heroSlider = document.getElementById('heroSlider');
+
+            console.log('Images data:', images);
+
+            if (images && images.length > 0) {
+                heroSlider.innerHTML = '';
+
+                images.forEach((imagePath, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'slide';
+
+                    // Since images is array of strings, use the string directly
+                    let path = imagePath;
+
+                    // Clean the path if needed
+                    if (path.includes('storage/')) {
+                        path = path.replace('storage/', '');
+                    }
+                    if (path.includes('public/')) {
+                        path = path.replace('public/', '');
+                    }
+
+                    const imageUrl = `/storage/${path}`;
+                    console.log(`Image URL: ${imageUrl}`);
+
+                    slide.style.backgroundImage = `url('${imageUrl}')`;
+
+                    const slideContent = document.createElement('div');
+                    slideContent.className = 'slide-content';
+
+                    const title = document.createElement('h2');
+                    title.textContent = 'Welcome to ACPS';
+
+                    const description = document.createElement('p');
+                    description.textContent = 'Providing quality education since 1985';
+
+                    const button = document.createElement('a');
+                    button.href = '#';
+                    button.className = 'btn';
+                    button.textContent = 'Learn More';
+
+                    slideContent.appendChild(title);
+                    slideContent.appendChild(description);
+                    slideContent.appendChild(button);
+                    slide.appendChild(slideContent);
+                    heroSlider.appendChild(slide);
+                });
+
+                return true; // Success
+            }
+            return false;
+        } catch (error) {
+            console.error('Error fetching home images:', error);
+            return false;
+        }
+    }
+        // Function to fetch about us content
+        async function fetchAboutUs() {
             try {
-                const response = await axios.get('{{ route("home-image") }}');
-                const images = response.data;
+                const response = await axios.get('{{ route('about-us') }}');
+                const aboutData = response.data;
 
-                const heroSlider = document.getElementById('heroSlider');
+                if (aboutData) {
+                    // Update about title
+                    if (aboutData.title) {
+                        document.getElementById('aboutTitle').textContent = aboutData.title;
+                    }
 
-                if (images.length > 0) {
-                    // Clear existing slides except the first one as fallback
-                    heroSlider.innerHTML = '';
+                    // Update about content
+                    if (aboutData.content) {
+                        document.getElementById('aboutContent').innerHTML = aboutData.content;
+                    }
 
-                    images.forEach((image, index) => {
-                        const slide = document.createElement('div');
-                        slide.className = index === 0 ? 'slide active' : 'slide';
-                        slide.style.backgroundImage = `url('${image.image_url || image.url}')`;
-
-                        const slideContent = document.createElement('div');
-                        slideContent.className = 'slide-content';
-
-                        const title = document.createElement('h2');
-                        title.textContent = image.title || 'Welcome to ACPS';
-
-                        const description = document.createElement('p');
-                        description.textContent = image.description || 'Providing quality education since 1985';
-
-                        const button = document.createElement('a');
-                        button.href = image.link || '#';
-                        button.className = 'btn';
-                        button.textContent = image.button_text || 'Learn More';
-
-                        slideContent.appendChild(title);
-                        slideContent.appendChild(description);
-                        slideContent.appendChild(button);
-                        slide.appendChild(slideContent);
-                        heroSlider.appendChild(slide);
-                    });
-
-                    // Update slides variable for slider functionality
-                    slides = document.querySelectorAll('.slide');
+                    // Update about image if available
+                    if (aboutData.image_url || aboutData.image) {
+                        document.getElementById('aboutImage').src = aboutData.image_url || aboutData.image;
+                    }
                 }
-                // If no images, the default slides will remain
+                // If no about data, the static content remains
             } catch (error) {
-                console.error('Error fetching home images:', error);
-                // Keep the default slides if there's an error
+                console.error('Error fetching about us content:', error);
+                // Keep the static about content if there's an error
             }
         }
     </script>
