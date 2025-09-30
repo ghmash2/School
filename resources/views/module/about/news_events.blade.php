@@ -1,60 +1,61 @@
 @extends('layouts.news_type_page')
+@php
+    $contentController = new \App\Http\Controllers\ContentController();
+    $contents = $contentController->viewAll('News & Events');
+    //$sliderImages = $content->content_images ? $content->content_images->all() : [];
+@endphp
+@section('title', 'News & Events')
 
-@section('title', 'News & Achievements')
-
-@section('page-title', 'News & Announcements')
+@section('page-title', 'News & Events')
 {{-- @section('page-subtitle', 'Stay updated with the latest news and achievements from ACPS') --}}
 
 @section('news-items')
-    <!-- News Item 1 -->
-    <div class="news-item">
-        <div class="news-image">
-            <img src="{{ asset('resources/images/test5.png') }}" alt="ACPS Wins National Award">
-        </div>
-        <div class="news-content">
-            <div class="news-meta">
-                <div class="news-date"><i class="far fa-calendar"></i> October 15, 2023</div>
-                <div class="news-category">Achievement</div>
-            </div>
-            <h2 class="news-headline">ACPS Wins National Education Award 2023</h2>
-            <p class="news-excerpt">Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p>
-            <a href="#" class="see-all-link" data-news="1">Read Full Story <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
 
-    <!-- Additional news items would be here -->
+    @foreach ($contents as $content)
+        @php
+            $images = $content->content_images ? $content->content_images->all() : [];
+        @endphp
+        <div class="news-item">
+            <div class="news-image">
+                @foreach ($images as $image)
+                    <img src="{{ $image }}">
+                @endforeach
+            </div>
+            <div class="news-content">
+                <div class="news-meta">
+                    <div class="news-date"><i class="far fa-calendar"></i> {{ $content->published_date }}</div>
+                    {{-- <div class="news-category">Achievement</div> --}}
+                </div>
+                <h2 class="news-headline">{{ $content->title }}</h2>
+                {{-- <p class="news-excerpt">Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students.</p> --}}
+                <a href="#full-news-{{ $content->id }}" class="see-all-link" data-news="{{ $content->id }}">Read Full Story <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    @endforeach
+
 @endsection
 
 @section('full-news')
-    <!-- Full News 1 -->
+    @foreach ($contents as $content)
+        @php
+            $images = $content->content_images ? $content->content_images->all() : [];
+        @endphp
     <div class="full-news" id="full-news-1">
         <div class="full-news-content">
             <div class="full-news-header">
                 <div>
-                    <h2 class="full-news-title">ACPS Wins National Education Award 2023</h2>
+                    <h2 class="full-news-title">{{ $content->title }}</h2>
                     <div class="news-meta">
-                        <div class="news-date"><i class="far fa-calendar"></i> October 15, 2023</div>
-                        <div class="news-category">Achievement</div>
+                        <div class="news-date"><i class="far fa-calendar"></i> {{ $content->published_date }}</div>
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('resources/images/test5.png') }}" alt="ACPS Wins National Award" class="full-news-image">
-            <div class="full-news-text">
-                <p>Bawany Government  Adarsha Biddyalaya has been honored with the National Education Award 2023 for outstanding academic performance and holistic development of students. This prestigious award recognizes our commitment to excellence in education.</p>
-
-                <p>The award ceremony was held at the National Education Complex in Dhaka, where our Principal, Dr. Rahman, received the award from the Education Minister. This is the third consecutive year that ACPS has received this recognition.</p>
-
-                <h3>Criteria for Selection</h3>
-                <p>The selection committee evaluated schools based on several criteria including academic results, extracurricular activities, teacher qualifications, infrastructure, and community engagement. ACPS scored exceptionally well in all categories.</p>
-
-                <p>Our consistent performance in board examinations, with a 98% pass rate and 45% of students achieving GPA-5, was particularly highlighted by the committee.</p>
-
-                <h3>Future Plans</h3>
-                <p>With this recognition, we are more motivated than ever to continue our journey of excellence. Plans are underway to introduce new STEM programs and enhance our digital learning infrastructure.</p>
-            </div>
+            <img src="{{ $image }}" alt="" class="full-news-image">
+            <div class="full-news-text">{{ $content->content }} </div>
             <a href="#" class="back-to-list"><i class="fas fa-arrow-left"></i> Back to News List</a>
         </div>
     </div>
+    @endforeach
 
-    <!-- Additional full news sections would be here -->
+
 @endsection

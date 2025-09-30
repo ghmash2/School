@@ -125,4 +125,9 @@ class TeacherController extends Controller
         return redirect()->route('panel.teachers.index')
             ->with('success', 'Teacher deleted successfully.');
     }
+    public function view()
+    {
+        $teacher = Teacher::get();
+        return $teacher;
+    }
 }

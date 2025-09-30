@@ -33,7 +33,7 @@ class NoticeController extends Controller
     {
         $validated = $request->validate([
             'section' => 'required|string|max:255',
-            'title' => 'required|string|max:255|unique:notices,title',
+            'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'published_date' => 'required|date',
             'published_by' => 'required|string|max:255',
@@ -84,7 +84,7 @@ class NoticeController extends Controller
     {
         $validated = $request->validate([
             'section' => 'required|string|max:255',
-            'title' => 'required|string|max:255|unique:notices,title,'.$notice->id,
+            'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'published_date' => 'required|date',
             'published_by' => 'required|string|max:255',
@@ -140,7 +140,7 @@ class NoticeController extends Controller
     }
      public function view($section)
     {
-        $content = Notice::where('section', $section)->with('notice_files')->firstOrFail();
+        $content = Notice::where('section', $section)->with('notice_files')->get();
         return $content;
     }
 }

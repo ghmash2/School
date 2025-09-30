@@ -33,7 +33,7 @@ class ContentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255|unique:contents,title',
+            'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'content' => 'required|string',
             'slug' => 'nullable|string|max:255|unique:contents,slug',
@@ -82,7 +82,7 @@ class ContentController extends Controller
     public function update(Request $request, Content $content)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255|unique:contents,title,'.$content->id,
+            'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'content' => 'required|string',
             'slug' => 'nullable|string|max:255|unique:contents,slug,'.$content->id,
@@ -140,4 +140,10 @@ class ContentController extends Controller
         $content = Content::where('title', $title)->with('content_images')->firstOrFail();
         return $content;
     }
+    public function viewAll($title)
+    {
+        $content = Content::where('title', $title)->with('content_images')->get();
+        return $content;
+    }
+
 }

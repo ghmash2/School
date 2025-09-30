@@ -125,4 +125,9 @@ class StaffController extends Controller
         return redirect()->route('panel.staffs.index')
             ->with('success', 'staff deleted successfully.');
     }
+    public function view()
+    {
+        $staffs = Staff::get();
+        return $staffs;
+    }
 }
