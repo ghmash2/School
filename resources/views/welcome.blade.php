@@ -27,16 +27,14 @@
                     <a href="#" class="btn">Learn More</a>
                 </div>
             </div> --}}
-            <div class="slide"
-                style="background-image: url('{{ asset('resources/images/test5.png') }}');">
+            <div class="slide" style="background-image: url('{{ asset('resources/images/test5.png') }}');">
                 <div class="slide-content">
                     <h2>Academic Excellence</h2>
                     <p>Our students consistently achieve outstanding results in national examinations.</p>
                     <a href="#" class="btn">View Results</a>
                 </div>
             </div>
-            <div class="slide"
-                style="background-image: url('{{ asset('resources/images/school_buiding.avif') }}');">
+            <div class="slide" style="background-image: url('{{ asset('resources/images/school_buiding.avif') }}');">
                 <div class="slide-content">
                     <h2>Extracurricular Activities</h2>
                     <p>We believe in holistic development through sports, arts, and cultural activities.</p>
@@ -45,12 +43,11 @@
             </div>
         </section>
 
- <!-- About Section -->
+        <!-- About Section -->
         <section class="about-section">
             <div class="about-container">
                 <div class="about-image">
-                    <img src="{{ asset('resources/images/school_buiding.avif') }}"
-                        alt="ACPS School Building">
+                    <img src="{{ asset('resources/images/school_buiding.avif') }}" alt="ACPS School Building">
                 </div>
                 <div class="about-content">
                     <h2>About ACPS</h2>
@@ -195,8 +192,26 @@
 
 
     <script>
-        const topNotices = [
-            {
+        // axios.get('/latest-notices')
+        //     .then(response => {
+        //         console.log(response.data); // Access the data returned from the controller
+        //         // Process the data here
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching data:', error);
+        //     });
+
+        // axios.get('/latest-contents')
+        //     .then(response => {
+        //         console.log(response.data); // Access the data returned from the controller
+        //         // Process the data here
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching data:', error);
+        //     });
+
+
+        const topNotices = [{
                 headline: "Final Examination Schedule for Fall 2023 Released",
                 pdfUrl: "https://example.com/notices/fall2023-exams.pdf"
             },

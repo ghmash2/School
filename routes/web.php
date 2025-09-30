@@ -15,8 +15,12 @@ Route::get('/', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomeTest');
 })->name('home');
+Route::get('/latest-contents', [ContentController::class, 'findLatestContents'])->name('latest-contents');
+Route::get('/About-Us', [ContentController::class, 'findAboutUs'])->name('about-us');
+Route::get('/home-image', [ContentController::class, 'findHomeImage'])->name('home-image');
+Route::get('/latest-notices', [NoticeController::class, 'findLatestNotices'])->name('latest-notices');
 Route::get('/login', [AuthController::class,  'showLogin'])->name('showLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 

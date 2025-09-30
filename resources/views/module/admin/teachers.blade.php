@@ -21,7 +21,7 @@
         @foreach ($teachers as $teacher)
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="{{ $teacher->image }}" alt="Dr. Sarah Johnson" class="teacher-image">
+                    <img src={{ asset('storage/' . $teacher->image) }} alt="" class="teacher-image">
                     <div class="teacher-basic-info">
                         <h3>{{ $teacher->name }}</h3>
                         <div class="teacher-designation">{{ $teacher->designation }}</div>

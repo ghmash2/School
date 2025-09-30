@@ -13,7 +13,7 @@
         @foreach ($staffs as $staff)
             <div class="teacher-card">
                 <div class="teacher-header">
-                    <img src="{{ $staff->image }}" alt="Dr. Sarah Johnson" class="teacher-image">
+                    <img src={{ asset('storage/' . $staff->image) }} alt="" class="teacher-image">
                     <div class="teacher-basic-info">
                         <h3>{{ $staff->name }}</h3>
                         <div class="teacher-designation">{{ $staff->designation }}</div>

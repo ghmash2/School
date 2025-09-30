@@ -143,4 +143,9 @@ class NoticeController extends Controller
         $content = Notice::where('section', $section)->with('notice_files')->get();
         return $content;
     }
+    public function findLatestNotices()
+    {
+        $content = Notice::with('notice_files')->latest()->limit(5)->get();
+        return $content;
+    }
 }

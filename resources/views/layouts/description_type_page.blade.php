@@ -20,11 +20,13 @@
                 </div>
             </div>
 
-            <div class="slider-nav">
+            {{-- <div class="slider-nav">
+                @if ($content != null && $sliderImages != null)
                 @for($i = 0; $i < count($sliderImages); $i++)
                     <div class="slider-dot {{ $i === 0 ? 'active' : '' }}"></div>
                 @endfor
-            </div>
+                @endif
+            </div> --}}
         </div>
 
         <!-- Page Content -->

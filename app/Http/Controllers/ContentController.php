@@ -142,8 +142,24 @@ class ContentController extends Controller
     }
     public function viewAll($title)
     {
-        $content = Content::where('title', $title)->with('content_images')->get();
+        $content = Content::where('title', $title)->with('content_images')->latest()->get();
         return $content;
+    }
+    public function findLatestContents()
+    {
+        $content = Content::with('content_images')->latest()->limit(5)->get();
+        return $content;
+    }
+    public function findAboutUs()
+    {
+        $content = Content::where('title', 'At a Glance')->with('content_images')->latest()->limit(1)->get();
+        return $content;
+    }
+    public function findHomeImage()
+    {
+        $content = Content::where('title', 'At a Glance')->with('content_images')->latest()->limit(1)->get();
+        $images = $content[0]->content_images[0]->image;
+        return $images;
     }
 
 }

@@ -2,7 +2,9 @@
 
 @php
     $contentController = new \App\Http\Controllers\ContentController();
+    
     $content = $contentController->view('Why Study at BGAB');
+
     $sliderImages = $content->content_images ? $content->content_images->all() : [];
 
 @endphp
@@ -22,7 +24,7 @@
 @section('headline', $content->title)
 
 @section('description')
-  {{ $content->content }}
+   {{ $content->content }}
 @endsection
 
 {{-- @section('stats')

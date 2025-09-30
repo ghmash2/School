@@ -6,7 +6,7 @@
 @endphp
 @section('title', 'Academic')
 
-@section('page-title', $notice->title)
+@section('page-title', $notices[0]->title ?? '')
 {{-- @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff') --}}
 
 @section('notices-content')
