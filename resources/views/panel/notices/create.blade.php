@@ -23,7 +23,7 @@
                         <label for="section">Notice section *</label>
                         <select name="section" id="section" class="form-control" required>
                             <option value="">-- Select notice section --</option>
-                            <option value="Academic Calender" {{ old('section') == 'Academic Calender' ? 'selected' : '' }}>Academic Calender </option>
+                            <option value="Academic Calendar" {{ old('section') == 'Academic Calender' ? 'selected' : '' }}>Academic Calender </option>
                             <option value="Class Routine" {{ old('section') == 'Class Routine' ? 'selected' : '' }}>
                                 Class Routine</option>
                             <option value="Syllabus and Booklist" {{ old('section') == 'Syllabus and Booklist' ? 'selected' : '' }}>

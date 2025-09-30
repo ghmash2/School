@@ -138,4 +138,9 @@ class NoticeController extends Controller
         $notice->notice_files()->delete();
         return redirect()->route('panel.notices.index')->with('success', 'Notice deleted successfully.');
     }
+     public function view($section)
+    {
+        $content = Notice::where('section', $section)->with('notice_files')->firstOrFail();
+        return $content;
+    }
 }
