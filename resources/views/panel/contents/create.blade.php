@@ -28,7 +28,7 @@
                                 History</option>
                             <option value="Why Study at BGAB" {{ old('title') == 'Why Study at BGAB' ? 'selected' : '' }}>
                                 Why Study at BGAB</option>
-    
+
                             <option value="Achievements" {{ old('title') == 'Achievements' ? 'selected' : '' }}>
                                 Achievements</option>
                             <option value="News & Events" {{ old('title') == 'News & Events' ? 'selected' : '' }}>News & Events</option><option value="Student Life" {{ old('title') == 'Student Life' ? 'selected' : '' }}>Student Life
@@ -69,6 +69,15 @@
                     @enderror
                 </div>
             </div> --}}
+                 <!-- Headline Field -->
+                <div class="form-group">
+                    <label for="headline">Headline*</label>
+                    <input name="headline" id="headline" class="form-control" rows="1" required
+                        placeholder="Enter the content headline here..." value = {{ old('headline') }}>
+                    @error('headline')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <!-- Content Field -->
                 <div class="form-group">

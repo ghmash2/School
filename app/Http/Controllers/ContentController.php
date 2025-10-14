@@ -37,6 +37,7 @@ class ContentController extends Controller
             'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'content' => 'required|string',
+            'headline' => 'required|string',
             'slug' => 'nullable|string|max:255|unique:contents,slug',
             'images.*' => 'nullable|image|max:15048',
         ]);

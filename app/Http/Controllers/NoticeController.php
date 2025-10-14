@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class NoticeController extends Controller
@@ -15,6 +16,7 @@ class NoticeController extends Controller
     public function index()
     {
         $notices = Notice::with('notice_files')->latest()->paginate(10);
+
         return view('panel.notices.index', compact('notices'));
     }
 
@@ -136,16 +138,39 @@ class NoticeController extends Controller
         }
         // Delete associated files from database
         $notice->notice_files()->delete();
+
         return redirect()->route('panel.notices.index')->with('success', 'Notice deleted successfully.');
     }
-     public function view($section)
+
+    public function view($section)
     {
         $content = Notice::where('section', $section)->with('notice_files')->get();
+
         return $content;
     }
+
     public function findLatestNotices()
     {
         $content = Notice::with('notice_files')->latest()->limit(5)->get();
+
         return $content;
+    }
+
+    public function downloadFile($id)
+    {
+
+        $file = \App\Models\NoticeFile::findOrFail($id);
+
+        $filePath = storage_path('app/public/'.$file->file);
+
+        if (! file_exists($filePath)) {
+            // Log the error for debugging
+            Log::error("File not found at path: {$filePath}");
+            abort(404, "File not found. Path: {$filePath}");
+        }
+
+        $originalName = basename($file->file);
+
+        return response()->download($filePath, $originalName);
     }
 }

@@ -6,42 +6,58 @@
 @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff')
 
 @section('notices-content')
-    <!-- Notice Item 1 -->
-    <div class="notice-item">
-        <div class="notice-date">
-            <i class="far fa-calendar"></i> October 20, 2023
-        </div>
-        <div class="notice-headline">
-            <a href="#">Admission Notice for Class XI - Academic Year 2024-25</a>
-            <div class="file-info">
-                <i class="far fa-file-pdf"></i> PDF, 245 KB
+    <!-- Notice Items -->
+    @foreach ($notices as $notice)
+        @php
+            $files = $notice->notice_files ? $notice->notice_files->all() : [];
+        @endphp
+        <div class="notice-item">
+            <div class="notice-date">
+                <i class="far fa-calendar"></i> {{ \Carbon\Carbon::parse($notice->published_date)->format('M d, Y') }}
+            </div>
+            <div class="notice-headline">
+                <h3>{{ $notice->title }}</h3>
+                @if ($notice->description)
+                    <p class="notice-description">{{ Str::limit($notice->description, 150) }}</p>
+                @endif
+                <div class="file-info">
+                    <i class="far fa-file"></i> {{ count($files) }} File(s)
+                </div>
+            </div>
+            <div class="notice-actions">
+                @if (count($files) > 0)
+                    @foreach ($files as $file)
+                        @php
+                            $fileExtension = pathinfo($file->file, PATHINFO_EXTENSION);
+                            $fileName = basename($file->file);
+                            $icon = 'far fa-file';
+
+                            if (in_array($fileExtension, ['pdf'])) {
+                                $icon = 'far fa-file-pdf text-danger';
+                            } elseif (in_array($fileExtension, ['doc', 'docx'])) {
+                                $icon = 'far fa-file-word text-primary';
+                            } elseif (in_array($fileExtension, ['xls', 'xlsx'])) {
+                                $icon = 'far fa-file-excel text-success';
+                            } elseif (in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                $icon = 'far fa-file-image text-info';
+                            }
+                        @endphp
+
+                        <button type="button" class="" title="Download {{ $fileName }}"
+                            onclick="window.location.href='{{ route('download.notice', $file->id) }}'">
+                            <i class="{{ $icon }}"></i>
+                        </button>
+                    @endforeach
+                @else
+                    <span class="no-files">No files attached</span>
+                @endif
             </div>
         </div>
-        <div class="notice-actions">
-            <a href="{{ asset('notices/admission-notice-2024.pdf') }}" class="download-btn" title="Download Notice">
-                <i class="fas fa-download"></i>
-            </a>
-        </div>
-    </div>
+    @endforeach
 
-    <!-- Notice Item 2 -->
-    <div class="notice-item">
-        <div class="notice-date">
-            <i class="far fa-calendar"></i> October 18, 2023
+    @if (count($notices) === 0)
+        <div class="no-notices">
+            <p>No files found.</p>
         </div>
-        <div class="notice-headline">
-            <a href="#">Annual Sports Day Schedule and Guidelines</a>
-            <span class="priority-high"><i class="fas fa-exclamation-circle"></i> Important</span>
-            <div class="file-info">
-                <i class="far fa-file-word"></i> DOCX, 187 KB
-            </div>
-        </div>
-        <div class="notice-actions">
-            <a href="{{ asset('notices/sports-day-schedule.docx') }}" class="download-btn" title="Download Notice">
-                <i class="fas fa-download"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Additional notice items would be here -->
+    @endif
 @endsection

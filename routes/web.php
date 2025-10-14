@@ -188,7 +188,8 @@ Route::prefix('gallery')->name('gallery.')->group(function () {
     })->name('video');
 });
 
-Route::get('/test', [TestController::class, 'test'])->name('test');
+// Route::get('/test', [TestController::class, 'test'])->name('test');
+Route::get('/download/notice-file/{id}', [NoticeController::class, 'downloadFile'])->name('download.notice');
 
 // Admin Panel Routes
 Route::middleware('auth')->group(function () {

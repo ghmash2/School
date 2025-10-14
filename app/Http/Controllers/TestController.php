@@ -6,7 +6,7 @@ class TestController extends Controller
 {
     public function test()
     {
-        $jsonData = '[{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-28 10:14:00","end_at":"2025-09-28 14:00:00","day":1,"minutes":226},{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-28 14:00:00","end_at":"2025-09-29 14:00:00","day":2,"minutes":1440},{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-29 14:00:00","end_at":"2025-09-29 15:23:00","day":0,"minutes":83}]';
+         $jsonData = '[{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-28 10:14:00","end_at":"2025-09-28 14:00:00","day":1,"minutes":226},{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-28 14:00:00","end_at":"2025-09-29 14:00:00","day":2,"minutes":1440},{"bed":{"id":1,"room_id":4,"room_type":1,"building_id":1,"floor_id":1,"is_ac":0,"name":"W1","short_name":"w1","bed_fee":"500.00","special_bed_fee":"300.00","is_used":1,"status":1,"created_by":null,"updated_by":null,"created_at":"2025-09-28T04:10:47.000000Z","updated_at":"2025-09-28T05:14:50.000000Z"},"bed_id":1,"bed_fee":"500.00","start_at":"2025-09-29 14:00:00","end_at":"2025-09-29 15:23:00","day":0,"minutes":83}]';
 
         $inputDataArray = json_decode($jsonData, true);
 
@@ -47,9 +47,12 @@ class TestController extends Controller
         $row['id'] = $convertedArray[count($convertedArray) - 1]['bed_id'];
         if ($lastDayCount < $day) {
             $row['day_count'] = 0;
-        }
-        else {
+        } else {
             $row['day_count'] = $lastDayCount - $day;
+        }
+        // add this for minimum 1 day count
+        if ($row['day_count'] <= 0) {
+            $row['day_count'] = 1;
         }
         $row['end_at'] = $convertedArray[count($convertedArray) - 1]['end_at'];
         $output[] = $row;

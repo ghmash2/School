@@ -181,15 +181,16 @@ body {
 }
 
 .full-news-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    max-height: 300px;
+    border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .full-news-text {
+    padding-top: 50px;
     line-height: 1.8;
     font-size: 16px;
 }
