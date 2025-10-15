@@ -31,8 +31,7 @@
 
                             <option value="Achievements" {{ old('title') == 'Achievements' ? 'selected' : '' }}>
                                 Achievements</option>
-                            <option value="News & Events" {{ old('title') == 'News & Events' ? 'selected' : '' }}>News & Events</option><option value="Student Life" {{ old('title') == 'Student Life' ? 'selected' : '' }}>Student Life
-                            </option>
+                            <option value="News & Events" {{ old('title') == 'News & Events' ? 'selected' : '' }}>News & Events</option>
                             <option value="Sports" {{ old('title') == 'Sports' ? 'selected' : '' }}>Sports</option>
                             <option value="Tours" {{ old('title') == 'Tours' ? 'selected' : '' }}>Tours</option>
                             <option value="Scouts" {{ old('title') == 'Scouts' ? 'selected' : '' }}>Scouts</option>

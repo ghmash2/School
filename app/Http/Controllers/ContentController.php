@@ -155,6 +155,10 @@ class ContentController extends Controller
 
         return $content;
     }
+    public function findLatestEvents()
+    {
+        return Content::where('title', 'News & Events')->with('content_images')->latest()->limit(5)->get();
+    }
 
     public function findAboutUs()
     {

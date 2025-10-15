@@ -162,7 +162,7 @@ class NoticeController extends Controller
         return $notices;
     }
 
-    private function getNoticeSectionUrl($section)
+    public function getNoticeSectionUrl($section)
     {
         $sectionRoutes = [
             'Academic Calender' => route('academic.calendar'),

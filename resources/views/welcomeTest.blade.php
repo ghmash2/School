@@ -7,6 +7,7 @@
 @php
     $contentController = new \App\Http\Controllers\ContentController();
     $content = $contentController->view('At a Glance');
+    $noticeController = new \App\Http\Controllers\NoticeController();
     //$sliderImages = $content->content_images ? $content->content_images->all() : [];
 @endphp
 @section('content')
@@ -53,7 +54,7 @@
                 <div class="about-content">
                     <h2 id="aboutTitle">About ACPS</h2>
                     <div id="aboutContent">
-                       {!! nl2br(e($content->content)) !!}
+                        {!! nl2br(e($content->content)) !!}
                     </div>
                     <a href="{{ route('about.history') }}" class="btn">Read More</a>
                 </div>
@@ -67,7 +68,7 @@
                 <div class="notice-board">
                     <div class="notice-header">
                         <h3>Latest Notices</h3>
-                        <a href="{{ route('latest-notices') }}" class="view-all">View All</a>
+                        <a href="{{ $noticeController->getNoticeSectionUrl('Notices') }}" class="view-all">View All</a>
                     </div>
                     <ul class="notice-list" id="noticeList">
                         <!-- Notices will be dynamically added here -->
@@ -77,7 +78,7 @@
                 <div class="upcoming-events">
                     <div class="notice-header">
                         <h3>Upcoming Events</h3>
-                        <a href="#" class="view-all">View All</a>
+                        <a href="{{ route('about.news-events') }}" class="view-all">View All</a>
                     </div>
                     <div id="eventsList">
                         <!-- Events will be dynamically added here -->
@@ -292,7 +293,7 @@
         // Function to fetch events
         async function fetchEvents() {
             try {
-                const response = await axios.get('{{ route('latest-contents') }}');
+                const response = await axios.get('{{ route('latest-events') }}');
                 const events = response.data;
 
                 const eventsList = document.getElementById('eventsList');
@@ -329,10 +330,10 @@
                         eventDetails.className = 'event-details';
 
                         const title = document.createElement('h4');
-                        title.textContent = event.title || 'Upcoming Event';
+                        title.textContent = event.headline || 'Upcoming Event';
 
                         const description = document.createElement('p');
-                        description.textContent = event.description || 'School event';
+                        description.textContent = event.tag || 'School event';
 
                         eventDetails.appendChild(title);
                         eventDetails.appendChild(description);

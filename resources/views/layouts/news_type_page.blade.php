@@ -9,7 +9,7 @@
     <div class="page-container">
         <!-- Page Header -->
         <div class="page-header">
-            <h1 class="page-title"><i class="fas fa-newspaper"></i> @yield('page-title')</h1>
+            <h5 class="page-title"><i class="fas fa-newspaper"></i> @yield('page-title')</h5>
             <p class="page-subtitle">@yield('page-subtitle')</p>
         </div>
 

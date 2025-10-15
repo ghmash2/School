@@ -7,17 +7,15 @@
 @section('title', 'About')
 
 @section('slider-content')
-    @foreach($sliderImages as $index => $slide)
-            <div class="scroll-image-item">
-                <img src="{{ asset('storage/' . $slide->image) }}"
-                     alt="Image {{ $index + 1 }}"
-                     class="scroll-image">
-            </div>
-        @endforeach
+    @foreach ($sliderImages as $index => $slide)
+        <div class="scroll-image-item">
+            <img src="{{ asset('storage/' . $slide->image) }}" alt="Image {{ $index + 1 }}" class="scroll-image">
+        </div>
+    @endforeach
 @endsection
 
 @section('headline', $content->title)
 
 @section('description')
-{!! nl2br(e($content->content)) !!}
+    {!! nl2br(e($content->content)) !!}
 @endsection

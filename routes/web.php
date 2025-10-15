@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcomeTest');
 })->name('home');
 Route::get('/latest-contents', [ContentController::class, 'findLatestContents'])->name('latest-contents');
+Route::get('/latest-events', [ContentController::class, 'findLatestEvents'])->name('latest-events');
 Route::get('/About-Us', [ContentController::class, 'findAboutUs'])->name('about-us');
 Route::get('/home-image', [ContentController::class, 'findHomeImage'])->name('home-image');
 Route::get('/latest-notices', [NoticeController::class, 'findLatestNotices'])->name('latest-notices');
