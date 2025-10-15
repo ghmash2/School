@@ -107,4 +107,9 @@ class GalleryImageController extends Controller
         $galleryImage->delete();
         return redirect()->route('panel.gallery-images.index')->with('success', 'Gallery image deleted successfully.');
     }
+
+    public function getAllImages()
+    {
+        return GalleryImage::all();
+    }
 }

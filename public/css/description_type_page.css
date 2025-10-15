@@ -112,6 +112,64 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* Heading Image  */
+.horizontal-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.horizontal-scroll-wrapper {
+    display: flex;
+    gap: 15px;
+    padding: 0 20px;
+    min-width: min-content; /* Ensure wrapper is wide enough for content */
+}
+
+.scroll-image-item {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-image-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.scroll-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Custom scrollbar styling */
+.horizontal-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
 /* Page Content */
 .page-content {
     background-color: white;
@@ -203,6 +261,19 @@ body {
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
     }
+     .horizontal-scroll-container {
+        padding: 10px 0;
+    }
+
+    .horizontal-scroll-wrapper {
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .scroll-image-item {
+        width: 250px;
+        height: 160px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -236,5 +307,9 @@ body {
 
     .stats-container {
         grid-template-columns: 1fr;
+    }
+    .scroll-image-item {
+        width: 220px;
+        height: 140px;
     }
 }

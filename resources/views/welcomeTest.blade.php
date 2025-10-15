@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 @php
-
+    $contentController = new \App\Http\Controllers\ContentController();
+    $content = $contentController->view('At a Glance');
+    //$sliderImages = $content->content_images ? $content->content_images->all() : [];
 @endphp
 @section('content')
     <!-- Main Content -->
@@ -17,7 +19,7 @@
             </div>
             <div class="top-notice-box">
                 <div class="top-notice-content" id="topNoticeContent">
-                    <!-- Notice items will be dynamically added here -->
+                    <!-- Top Notice items will be dynamically added here -->
                 </div>
             </div>
         </div>
@@ -51,21 +53,9 @@
                 <div class="about-content">
                     <h2 id="aboutTitle">About ACPS</h2>
                     <div id="aboutContent">
-                        <p>Bawany Government Adarsha Biddyalaya is a premier educational institution established in 1985.
-                            With a
-                            rich history of academic excellence, we have been shaping young minds to become responsible
-                            citizens
-                            and future leaders.</p>
-                        <p>Our campus features state-of-the-art facilities including modern classrooms, well-equipped
-                            laboratories, a comprehensive library, and extensive sports facilities. We believe in holistic
-                            education that nurtures intellectual, physical, and emotional growth.</p>
-                        <p>Our dedicated faculty members are committed to providing quality education and personalized
-                            attention
-                            to each student. We follow a student-centric approach that encourages critical thinking,
-                            creativity,
-                            and character development.</p>
+                       {!! nl2br(e($content->content)) !!}
                     </div>
-                    <a href="{{ route('about.glance') }}" class="btn">Read More</a>
+                    <a href="{{ route('about.history') }}" class="btn">Read More</a>
                 </div>
             </div>
         </section>
@@ -138,85 +128,85 @@
             </div>
         </section>
     </main>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    // Global variables for slider
-    let currentSlide = 0;
-    let slideInterval;
-    let slides = [];
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Global variables for slider
+        let currentSlide = 0;
+        let slideInterval;
+        let slides = [];
 
-    function showSlide(n) {
-        if (slides.length === 0) return;
+        function showSlide(n) {
+            if (slides.length === 0) return;
 
-        slides.forEach(slide => slide.classList.remove('active'));
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    function startSlider() {
-        // Clear existing interval if any
-        if (slideInterval) {
-            clearInterval(slideInterval);
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
 
-        // Get slides after they're loaded
-        slides = document.querySelectorAll('.hero-slider .slide');
+        function startSlider() {
+            // Clear existing interval if any
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
 
-        if (slides.length > 0) {
-            // Ensure first slide is active
-            showSlide(0);
+            // Get slides after they're loaded
+            slides = document.querySelectorAll('.hero-slider .slide');
 
-            // Auto-advance slides every 5 seconds
-            slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 5000);
+            if (slides.length > 0) {
+                // Ensure first slide is active
+                showSlide(0);
+
+                // Auto-advance slides every 5 seconds
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            }
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fetch and display top notices (marquee)
-        fetchTopNotices();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch and display top notices (marquee)
+            fetchTopNotices();
 
-        // Fetch and display latest notices
-        fetchLatestNotices();
+            // Fetch and display latest notices
+            fetchLatestNotices();
 
-        // Fetch and display events
-        fetchEvents();
+            // Fetch and display events
+            fetchEvents();
 
-        // Fetch and display about section
-        fetchAboutUs();
+            // Fetch and display about section
+            fetchAboutUs();
 
-        // Fetch home images for slider LAST, then initialize slider
-        fetchHomeImages().then(() => {
-            // Initialize slider after images are loaded
-            setTimeout(() => {
-                startSlider();
-            }, 100);
+            // Fetch home images for slider LAST, then initialize slider
+            fetchHomeImages().then(() => {
+                // Initialize slider after images are loaded
+                setTimeout(() => {
+                    startSlider();
+                }, 100);
+            });
+
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        this.reset();
+                    }
+                });
+            }
         });
-
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-        }
-
-        // Newsletter form submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                if (email) {
-                    alert('Thank you for subscribing to our newsletter!');
-                    this.reset();
-                }
-            });
-        }
-    });
         // Function to fetch top notices for marquee
         async function fetchTopNotices() {
             try {
@@ -231,10 +221,11 @@
                         const noticeLink = document.createElement('a');
                         noticeLink.className = 'top-notice-item';
                         noticeLink.textContent = notice.title || notice.headline;
-                        noticeLink.href = notice.file_url || '#';
-                        if (notice.file_url) {
-                            noticeLink.target = '_blank';
-                        }
+                        noticeLink.href = notice.url || '#';
+
+                        // if (notice.file_url) {
+                        //     noticeLink.target = '_blank';
+                        // }
 
                         topNoticeContent.appendChild(noticeLink);
                     });
@@ -271,10 +262,10 @@
                         listItem.className = 'notice-item';
 
                         const link = document.createElement('a');
-                        link.href = notice.file_url || '#';
-                        if (notice.file_url) {
-                            link.target = '_blank';
-                        }
+                        link.href = notice.url || '#';
+                        // if (notice.file_url) {
+                        //     link.target = '_blank';
+                        // }
 
                         const icon = document.createElement('i');
                         icon.className = 'fas fa-bullhorn';
@@ -383,66 +374,66 @@
 
         // Function to fetch home images for slider
         // Function to fetch home images for slider - SIMPLE VERSION FOR STRING ARRAY
-async function fetchHomeImages() {
-        try {
-            const response = await axios.get('{{ route('home-image') }}');
-            const images = response.data;
-            const heroSlider = document.getElementById('heroSlider');
+        async function fetchHomeImages() {
+            try {
+                const response = await axios.get('{{ route('home-image') }}');
+                const images = response.data;
+                const heroSlider = document.getElementById('heroSlider');
 
-            console.log('Images data:', images);
+                console.log('Images data:', images);
 
-            if (images && images.length > 0) {
-                heroSlider.innerHTML = '';
+                if (images && images.length > 0) {
+                    heroSlider.innerHTML = '';
 
-                images.forEach((imagePath, index) => {
-                    const slide = document.createElement('div');
-                    slide.className = 'slide';
+                    images.forEach((imagePath, index) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'slide';
 
-                    // Since images is array of strings, use the string directly
-                    let path = imagePath;
+                        // Since images is array of strings, use the string directly
+                        let path = imagePath;
 
-                    // Clean the path if needed
-                    if (path.includes('storage/')) {
-                        path = path.replace('storage/', '');
-                    }
-                    if (path.includes('public/')) {
-                        path = path.replace('public/', '');
-                    }
+                        // Clean the path if needed
+                        if (path.includes('storage/')) {
+                            path = path.replace('storage/', '');
+                        }
+                        if (path.includes('public/')) {
+                            path = path.replace('public/', '');
+                        }
 
-                    const imageUrl = `/storage/${path}`;
-                    console.log(`Image URL: ${imageUrl}`);
+                        const imageUrl = `/storage/${path}`;
+                        console.log(`Image URL: ${imageUrl}`);
 
-                    slide.style.backgroundImage = `url('${imageUrl}')`;
+                        slide.style.backgroundImage = `url('${imageUrl}')`;
 
-                    const slideContent = document.createElement('div');
-                    slideContent.className = 'slide-content';
+                        const slideContent = document.createElement('div');
+                        slideContent.className = 'slide-content';
 
-                    const title = document.createElement('h2');
-                    title.textContent = 'Welcome to ACPS';
+                        const title = document.createElement('h2');
+                        title.textContent = 'Welcome to ACPS';
 
-                    const description = document.createElement('p');
-                    description.textContent = 'Providing quality education since 1985';
+                        const description = document.createElement('p');
+                        description.textContent = 'Providing quality education since 1985';
 
-                    const button = document.createElement('a');
-                    button.href = '#';
-                    button.className = 'btn';
-                    button.textContent = 'Learn More';
+                        const button = document.createElement('a');
+                        button.href = '#';
+                        button.className = 'btn';
+                        button.textContent = 'Learn More';
 
-                    slideContent.appendChild(title);
-                    slideContent.appendChild(description);
-                    slideContent.appendChild(button);
-                    slide.appendChild(slideContent);
-                    heroSlider.appendChild(slide);
-                });
+                        slideContent.appendChild(title);
+                        slideContent.appendChild(description);
+                        slideContent.appendChild(button);
+                        slide.appendChild(slideContent);
+                        heroSlider.appendChild(slide);
+                    });
 
-                return true; // Success
+                    return true; // Success
+                }
+                return false;
+            } catch (error) {
+                console.error('Error fetching home images:', error);
+                return false;
             }
-            return false;
-        } catch (error) {
-            console.error('Error fetching home images:', error);
-            return false;
         }
-    }
         // Function to fetch about us content
         async function fetchAboutUs() {
             try {

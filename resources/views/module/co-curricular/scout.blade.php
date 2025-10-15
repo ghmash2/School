@@ -22,5 +22,5 @@
 @section('headline', $content->title)
 
 @section('description')
-{{ $content->content }}
+{!! nl2br(e($content->content)) !!}
 @endsection

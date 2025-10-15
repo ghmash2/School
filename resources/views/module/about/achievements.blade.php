@@ -57,7 +57,7 @@
                 @endforeach
             </div>
 
-            <div class="full-news-text">{{ $content->content }} </div>
+            <div class="full-news-text">{!! nl2br(e($content->content)) !!} </div>
             <a href="#" class="back-to-list"><i class="fas fa-arrow-left"></i> Back to News List</a>
         </div>
     </div>

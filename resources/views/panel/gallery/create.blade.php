@@ -22,7 +22,15 @@
                     <!-- Tag Field -->
                     <div class="form-group">
                         <label for="tag">Tag</label>
-                        <input type="text" name="tag" id="tag" class="form-control" value="{{ old('tag') }}" placeholder="e.g., Events, Sports, Academic">
+                        <select type="text" name="tag" id="tag" class="form-control" value="{{ old('tag') }}" placeholder="">
+                            <option value="event">Events</option>
+                            <option value="sport">Sports</option>
+                            <option value="academic">Academic</option>
+                            <option value="student">Student</option>
+                            <option value="campus">Campus</option>
+                            <option value="other">Others</option>
+
+                        </select>
                         @error('tag')
                             <span class="error">{{ $message }}</span>
                         @enderror

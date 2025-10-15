@@ -153,7 +153,37 @@ class NoticeController extends Controller
     {
         $content = Notice::with('notice_files')->latest()->limit(5)->get();
 
-        return $content;
+        $notices = $content->transform(function ($notice) {
+            $notice->url = $this->getNoticeSectionUrl($notice->section);
+
+            return $notice;
+        });
+
+        return $notices;
+    }
+
+    private function getNoticeSectionUrl($section)
+    {
+        $sectionRoutes = [
+            'Academic Calender' => route('academic.calendar'),
+            'Class Routine' => route('academic.routine'),
+            'Syllabus and Booklist' => route('academic.syllabus'),
+            'Exam Routine' => route('academic.exam-routine'),
+            'Notices' => route('academic.notice'),
+            'Result' => route('academic.result'),
+            'Admission Circular' => route('admission.circular'),
+            'Prospectus' => route('admission.prospectus'),
+            'Admission Result' => route('admission.admission-result'),
+            'Waiting List' => route('admission.waiting-list'),
+            'Courses' => route('admission.courses'),
+            'Digital-Class-Six' => route('digital.six'),
+            'Digital-Class-Seven' => route('digital.seven'),
+            'Digital-Class-Eight' => route('digital.eight'),
+            'Digital-Class-Nine-Ten' => route('digital.nine-ten'),
+            // Add more sections as needed
+        ];
+
+        return $sectionRoutes[$section] ?? '#';
     }
 
     public function downloadFile($id)

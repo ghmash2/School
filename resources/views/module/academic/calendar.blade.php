@@ -5,7 +5,7 @@
 @endphp
 @section('title', 'Academic')
 
-@section('page-title', $notices[0]->title ?? 'Academic Calendar')
+@section('page-title',  'Academic Calendar')
 
 @section('notices-content')
     <!-- Notice Items -->

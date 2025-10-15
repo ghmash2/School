@@ -8,17 +8,16 @@
 
 @section('slider-content')
     @foreach($sliderImages as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset('storage/' . $slide->image) }}');">
-            {{-- <div class="slide-content">
-                <h3 class="slide-title">{{ $slide['title'] }}</h3>
-                <p class="slide-desc">{{ $slide['desc'] }}</p>
-            </div> --}}
-        </div>
-    @endforeach
+            <div class="scroll-image-item">
+                <img src="{{ asset('storage/' . $slide->image) }}"
+                     alt="Image {{ $index + 1 }}"
+                     class="scroll-image">
+            </div>
+        @endforeach
 @endsection
 
 @section('headline', $content->title)
 
 @section('description')
-{{ $content->content }}
+{!! nl2br(e($content->content)) !!}
 @endsection
