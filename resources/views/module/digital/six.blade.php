@@ -6,7 +6,7 @@
 @endphp
 @section('title', 'Digital')
 
-@section('page-title',  'Digital Class Six')
+@section('page-title', 'Digital Class Six')
 {{-- @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff') --}}
 
 @section('notices-content')
