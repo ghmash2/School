@@ -35,6 +35,11 @@ class GalleryImageController extends Controller
             'description' => 'nullable|string',
             'image.*' => 'required|image',
        ]);
+       // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+
 
          $count = 1;
          foreach ($request->file('image') as $image) {
@@ -79,6 +84,11 @@ class GalleryImageController extends Controller
             'description' => 'nullable|string',
             'image.*' => 'required|image',
        ]);
+       // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+            
 
        if ($request->hasFile('image')) {
             // Delete the old image if exists

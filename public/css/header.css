@@ -76,14 +76,15 @@ body {
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 90px;
     background: linear-gradient(135deg, #1a3a8f, #2d5ba8);
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-right: 15px;
+    justify-content: left;
+    margin-right: 35px;
+    margin-left: -20px;
     border: 3px solid #ffcc00;
 }
 

@@ -44,6 +44,10 @@ class StaffController extends Controller
             'designation' => 'string|max:255',
             'age' => 'integer',
         ]);
+        // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
 
           if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
@@ -92,6 +96,11 @@ class StaffController extends Controller
         'designation' => 'nullable|string|max:255',
         'age' => 'nullable|integer|min:18|max:100',
     ]);
+    // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+            
      } catch (\Illuminate\Validation\ValidationException $e) {
         dd($e->errors()); // This shows exactly which rules failed
     }

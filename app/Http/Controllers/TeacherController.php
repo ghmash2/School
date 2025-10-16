@@ -44,8 +44,12 @@ class TeacherController extends Controller
             'designation' => 'string|max:255',
             'age' => 'integer',
         ]);
+        // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
 
-          if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $validated['image'] = $imagePath;
         }
@@ -77,25 +81,30 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //dd($request->all());
-           try {
-        $validated = $request->validate([
-        'name' => 'nullable|string|max:255',
-        'email' => 'nullable|email|unique:teachers,email,' . $teacher->id,
-        'subject' => 'nullable|string|max:255',
-        'phone' => 'nullable|string|max:20|unique:teachers,phone,' . $teacher->id,
-        'join_date' => 'nullable|date',
-        'address' => 'nullable|string',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'retire_date' => 'nullable|date',
-        'dept' => 'nullable|string|max:255',
-        'designation' => 'nullable|string|max:255',
-        'age' => 'nullable|integer|min:18|max:100',
-    ]);
-     } catch (\Illuminate\Validation\ValidationException $e) {
-        dd($e->errors()); // This shows exactly which rules failed
-    }
-        //dd($validated);
+        // dd($request->all());
+        try {
+            $validated = $request->validate([
+                'name' => 'nullable|string|max:255',
+                'email' => 'nullable|email|unique:teachers,email,'.$teacher->id,
+                'subject' => 'nullable|string|max:255',
+                'phone' => 'nullable|string|max:20|unique:teachers,phone,'.$teacher->id,
+                'join_date' => 'nullable|date',
+                'address' => 'nullable|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'retire_date' => 'nullable|date',
+                'dept' => 'nullable|string|max:255',
+                'designation' => 'nullable|string|max:255',
+                'age' => 'nullable|integer|min:18|max:100',
+            ]);
+            // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            dd($e->errors()); // This shows exactly which rules failed
+        }
+        // dd($validated);
 
         if ($request->hasFile('image')) {
             // Delete old image
@@ -125,9 +134,11 @@ class TeacherController extends Controller
         return redirect()->route('panel.teachers.index')
             ->with('success', 'Teacher deleted successfully.');
     }
+
     public function view()
     {
         $teacher = Teacher::get();
+
         return $teacher;
     }
 }

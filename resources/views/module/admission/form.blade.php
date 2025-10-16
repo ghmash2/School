@@ -43,7 +43,7 @@
                             }
                         @endphp
 
-                        <button type="button" class="" title="Download {{ $fileName }}"
+                        <button type="button" class="download-btn" title="Download {{ $fileName }}"
                             onclick="window.location.href='{{ route('download.notice', $file->id) }}'">
                             <i class="{{ $icon }}"></i>
                         </button>

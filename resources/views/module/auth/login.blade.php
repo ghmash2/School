@@ -12,7 +12,7 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <h1><i class="fas fa-graduation-cap"></i> Prestige University</h1>
+            <h1><i class="fas fa-graduation-cap"></i>Sign In</h1>
             <p>Sign in to your account</p>
         </div>
 
@@ -57,7 +57,7 @@
                     </a></button>
 
                     <button type="submit" class="login-button">
-                        <i class="fas fa-sign-in-alt"></i> Sign In
+                        <i class="fas fa-sign-in-alt"></i> Log In
                     </button>
                 </div>
             </form>
@@ -71,7 +71,7 @@
     <script>
         // Form submission handling
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-           // e.preventDefault(); 
+           // e.preventDefault();
 
             // Get form data
             const formData = new FormData(this);

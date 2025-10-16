@@ -23,7 +23,12 @@
                         <label for="title">Content Title *</label>
                         <select name="title" id="title" class="form-control" required>
                             <option value="">-- Select Content Title --</option>
-                            <option value="At a Glance" {{ old('title') == 'At a Glance' ? 'selected' : '' }}>At a Glance</option>
+                            <option value="Chairman Message" {{ old('title') == 'Chairman Message' ? 'selected' : '' }}>Message of Chairman
+                            </option>
+                            <option value="Principal Message" {{ old('title') == 'Principal Message' ? 'selected' : '' }}>Message of Principal
+                            </option>
+                            <option value="At a Glance" {{ old('title') == 'At a Glance' ? 'selected' : '' }}>At a Glance
+                            </option>
                             <option value="History" {{ old('title') == 'History' ? 'selected' : '' }}>
                                 History</option>
                             <option value="Why Study at BGAB" {{ old('title') == 'Why Study at BGAB' ? 'selected' : '' }}>
@@ -31,14 +36,18 @@
 
                             <option value="Achievements" {{ old('title') == 'Achievements' ? 'selected' : '' }}>
                                 Achievements</option>
-                            <option value="News & Events" {{ old('title') == 'News & Events' ? 'selected' : '' }}>News & Events</option>
+                            <option value="News & Events" {{ old('title') == 'News & Events' ? 'selected' : '' }}>News &
+                                Events</option>
                             <option value="Sports" {{ old('title') == 'Sports' ? 'selected' : '' }}>Sports</option>
                             <option value="Tours" {{ old('title') == 'Tours' ? 'selected' : '' }}>Tours</option>
                             <option value="Scouts" {{ old('title') == 'Scouts' ? 'selected' : '' }}>Scouts</option>
                             <option value="ICT Club" {{ old('title') == 'ICT Club' ? 'selected' : '' }}>ICT Club</option>
-                             <option value="Science Club" {{ old('title') == 'Science Club' ? 'selected' : '' }}>Science Club</option>
-                              <option value="Cultural Club" {{ old('title') == 'Cultural Club' ? 'selected' : '' }}>Cultural Club</option>
-                               <option value="Photography Club" {{ old('title') == 'Photography Club' ? 'selected' : '' }}> Photography Club</option>
+                            <option value="Science Club" {{ old('title') == 'Science Club' ? 'selected' : '' }}>Science
+                                Club</option>
+                            <option value="Cultural Club" {{ old('title') == 'Cultural Club' ? 'selected' : '' }}>Cultural
+                                Club</option>
+                            <option value="Photography Club" {{ old('title') == 'Photography Club' ? 'selected' : '' }}>
+                                Photography Club</option>
                         </select>
                         @error('title')
                             <span class="error">{{ $message }}</span>
@@ -68,11 +77,11 @@
                     @enderror
                 </div>
             </div> --}}
-                 <!-- Headline Field -->
+                <!-- Headline Field -->
                 <div class="form-group">
                     <label for="headline">Headline*</label>
                     <input name="headline" id="headline" class="form-control" rows="1" required
-                        placeholder="Enter the content headline here..." value = {{ old('headline') }}>
+                        placeholder="Enter the content headline here..." value={{ old('headline') }}>
                     @error('headline')
                         <span class="error">{{ $message }}</span>
                     @enderror

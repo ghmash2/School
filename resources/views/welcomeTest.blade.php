@@ -8,7 +8,7 @@
     $contentController = new \App\Http\Controllers\ContentController();
     $content = $contentController->view('At a Glance');
     $noticeController = new \App\Http\Controllers\NoticeController();
-    //$sliderImages = $content->content_images ? $content->content_images->all() : [];
+    $image = $content->content_images ? $content->content_images->first()->image : '';
 @endphp
 @section('content')
     <!-- Main Content -->
@@ -48,8 +48,7 @@
         <section class="about-section" id="aboutSection">
             <div class="about-container">
                 <div class="about-image">
-                    <img src="{{ asset('resources/images/school_buiding.avif') }}" alt="ACPS School Building"
-                        id="aboutImage">
+                    <img src="{{ asset('storage/' . $image) }}" alt="ACPS School Building" id="aboutImage">
                 </div>
                 <div class="about-content">
                     <h2 id="aboutTitle">About ACPS</h2>
@@ -88,7 +87,7 @@
         </section>
 
         <!-- Academic Programs -->
-        <section class="programs-section">
+        {{-- <section class="programs-section">
             <h2 class="section-title">Academic Programs</h2>
             <div class="programs-container">
                 <div class="program-cards">
@@ -127,7 +126,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -274,8 +273,18 @@
                         const text = document.createElement('span');
                         text.textContent = notice.title || notice.headline;
 
+                        // const date = document.createElement('span');
+                        // if (notice.created_at) {
+                        //     const d = new Date(notice.created_at);
+                        //     date.textContent = d.toLocaleDateString('en-GB'); // dd/mm/yyyy
+                        // } else {
+                        //     date.textContent = '';
+                        // }
+                        // date.className = 'notice-date';
+
                         link.appendChild(icon);
                         link.appendChild(text);
+
                         listItem.appendChild(link);
                         noticeList.appendChild(listItem);
                     });
@@ -309,7 +318,7 @@
                         eventDate.className = 'event-date';
 
                         // Parse date or use current date as fallback
-                        const eventDateObj = event.event_date ? new Date(event.event_date) : new Date();
+                        const eventDateObj = event.created_at ? new Date(event.created_at) : new Date();
                         const day = eventDateObj.getDate();
                         const month = eventDateObj.toLocaleString('default', {
                             month: 'short'
@@ -410,13 +419,13 @@
                         slideContent.className = 'slide-content';
 
                         const title = document.createElement('h2');
-                        title.textContent = 'Welcome to ACPS';
+                        title.textContent = 'Welcome to BGAB';
 
                         const description = document.createElement('p');
                         description.textContent = 'Providing quality education since 1985';
 
                         const button = document.createElement('a');
-                        button.href = '#';
+                        button.href = '/about/why-study';
                         button.className = 'btn';
                         button.textContent = 'Learn More';
 

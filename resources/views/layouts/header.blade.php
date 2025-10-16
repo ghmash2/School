@@ -1,38 +1,22 @@
+@php
+    $info = \App\Models\BasicInfo::first();
+@endphp
 <body>
-    <!-- Top info bar -->
-    {{-- <div class="top-info-bar">
-        <div class="top-info-container">
-            <div class="top-info-left">
-                <div class="top-info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+88 01234567891</span>
-                </div>
-                <div class="top-info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@acps.edu.bd</span>
-                </div>
-            </div>
-            <div class="top-info-right">
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <!-- Main header -->
     <header class="main-header">
         <div class="header-container">
             <div class="logo-container">
-                <div class="logo">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
+                 <img src="{{ asset('storage/' . $info->logo) }}" alt="logo" class="logo">
                 <div class="school-name">
-                    <h1>BAWANY GOVERNMENT ADARSHA BIDDYALAYA</h1>
-                    <p>Knowledge • Discipline • Excellence</p>
+                    <h1>{{ $info->name }}</h1>
+                    <p>{{ $info->motto }}</p>
+                </div>
+            </div>
+            <div>
+                <div class="contact-info" style="color: white">
+                    <p>EIIN: {{ $info->eiin }}</p>
+                    <p><i class="fas fa-phone"></i> {{ $info->phone }}</p>
+                    <p><i class="fas fa-envelope"></i> {{ $info->email }}</p>
                 </div>
             </div>
         </div>

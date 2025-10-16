@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BasicInfoController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\NoticeController;
@@ -52,7 +53,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/governing-body', function () {
         return view('module.admin.governing_body');
     })->name('governing-body');
-    Route::get('/chairman-message', function () {
+    Route::get('/chairman-message', function ()  {
         return view('module.admin.chairman_message');
     })->name('chairman-message');
     Route::get('/principal-message', function () {
@@ -209,6 +210,7 @@ Route::middleware('auth')->group(function () {
          Route::resource('contents', ContentController::class);
          Route::resource('notices', NoticeController::class);
          Route::resource('gallery-images', GalleryImageController::class);
+         Route::resource('basic-infos', BasicInfoController::class);
         // Route::resource('others', OtherController::class);
 
     });

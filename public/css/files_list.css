@@ -120,8 +120,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1a3a8f;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -132,6 +132,7 @@ body {
 .download-btn:hover {
     background-color: #2d5ba8;
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .file-info {

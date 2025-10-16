@@ -41,6 +41,11 @@ class ContentController extends Controller
             'slug' => 'nullable|string|max:255|unique:contents,slug',
             'images.*' => 'nullable|image|max:15048',
         ]);
+        // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+            
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']);
         }
@@ -88,7 +93,14 @@ class ContentController extends Controller
             'slug' => 'nullable|string|max:255|unique:contents,slug,'.$content->id,
             'images.*' => 'nullable|image|max:15048',
         ]);
+        // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
 
+        if (empty($validated['slug'])) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
         $content->update($validated);
 
         if ($request->hasFile('images')) {

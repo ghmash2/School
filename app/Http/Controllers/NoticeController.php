@@ -43,6 +43,11 @@ class NoticeController extends Controller
             'slug' => 'nullable|string|max:255|unique:notices,slug',
             'files.*' => 'nullable|file|max:15048', // Max 15MB per file
         ]);
+       // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']);
         }
@@ -94,6 +99,11 @@ class NoticeController extends Controller
             'slug' => 'nullable|string|max:255|unique:notices,slug,'.$notice->id,
             'files.*' => 'nullable|file|max:15048', // Max 15MB per file
         ]);
+       // sanitize input
+            $validated = array_map(function ($value) {
+                return is_string($value) ? strip_tags($value) : $value;
+            }, $validated);
+            
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']);
         }
