@@ -11,7 +11,6 @@
         <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title"><i class="fas fa-images"></i> @yield('page-title')</h1>
-            <p class="page-subtitle">@yield('page-subtitle')</p>
         </div>
 
         {{-- <!-- Gallery Navigation -->

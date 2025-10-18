@@ -23,7 +23,7 @@
                 <div class="teacher-details">
                     <div class="detail-row">
                         <div class="detail-label"><i class="far fa-calendar-alt"></i> Joining Date</div>
-                        <div class="detail-value">{{ $staff->joining_date }}</div>
+                        <div class="detail-value">{{ $staff->join_date }}</div>
                     </div>
                     <div class="detail-row">
                         <div class="detail-label"><i class="far fa-envelope"></i> Email</div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="detail-row">
                         <div class="detail-label"><i class="fas fa-phone"></i> Contact</div>
-                        <div class="detail-value">{{ $staff->contact }}</div>
+                        <div class="detail-value">{{ $staff->phone }}</div>
                     </div>
                     <div class="detail-row">
                         <div class="detail-label"><i class="fas fa-id-card"></i> Staff ID</div>

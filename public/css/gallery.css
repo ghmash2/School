@@ -16,8 +16,8 @@ body {
 /* Layout Container */
 .page-container {
     max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+    margin: 10px auto;
+    padding: 0 10px;
 }
 
 /* Page Header */
@@ -25,12 +25,12 @@ body {
     background: linear-gradient(to right, #1a3a8f, #2d5ba8);
     color: white;
     border-radius: 8px 8px 0 0;
-    padding: 25px 30px;
+    padding: 5px 10px;
     margin-bottom: 0;
 }
 
 .page-title {
-    font-size: 32px;
+    font-size: 24px;
     display: flex;
     align-items: center;
 }
@@ -83,7 +83,7 @@ body {
 /* Filter Section */
 .filter-section {
     background-color: white;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-bottom: 1px solid #eaeaea;
     display: flex;
     justify-content: space-between;

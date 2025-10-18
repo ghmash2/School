@@ -14,9 +14,9 @@ body {
 
 /* Layout Container */
 .page-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+    max-width: 1300px;
+    margin: 10px auto;
+    padding: 0 10px;
 }
 
 /* Image Slider */
@@ -26,7 +26,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .slide {
@@ -116,15 +116,15 @@ body {
 .horizontal-scroll-container {
     width: 100%;
     overflow-x: auto;
-    padding: 20px 0;
+    padding: 10px 0;
     background: #f8f9fa;
     border-radius: 8px;
 }
 
 .horizontal-scroll-wrapper {
     display: flex;
-    gap: 15px;
-    padding: 0 20px;
+    gap: 10px;
+    padding: 0 10px;
     min-width: min-content; /* Ensure wrapper is wide enough for content */
 }
 
@@ -175,14 +175,14 @@ body {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    padding: 10px;
 }
 
 .page-headline {
     color: #1a3a8f;
-    font-size: 32px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
     border-bottom: 3px solid #ffcc00;
 }
 

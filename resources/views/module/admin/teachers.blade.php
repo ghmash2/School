@@ -7,7 +7,7 @@
 @section('title', 'Faculty Directory')
 
 @section('page-title', 'Faculty Directory')
-{{-- @section('page-subtitle', 'Meet our dedicated teaching staff and faculty members') --}}
+{{-- @section('page-subtitle', 'Meet our dedicated teaching teacher and faculty members') --}}
 @section('filter')
     <button class="filter-btn active">All Faculty</button>
     <button class="filter-btn">Science Department</button>
@@ -42,11 +42,13 @@
                         <div class="detail-value">{{ $teacher->phone }}</div>
                     </div>
                     <div class="detail-row">
-                        <div class="detail-label"><i class="fas fa-id-card"></i> Teacher ID</div>
+                        <div class="detail-label"><i class="fas fa-id-card"></i> teacher ID</div>
                         <div class="detail-value"><span class="teacher-id">{{ $teacher->id }}</span></div>
                     </div>
                 </div>
+            </div>
         @endforeach
-    </div>
 
+    </div>
 @endsection
+
