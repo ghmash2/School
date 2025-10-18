@@ -40,14 +40,12 @@
 
                 @yield('notices-content')
 
-
-
-                <!-- Pagination -->
-                @yield('pagination')
-                
             </div>
+            @yield('pagination')
+
         </div>
 
         <script src="{{ asset('js/files_list.js') }}"></script>
+
     </body>
 @endsection

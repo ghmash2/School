@@ -1,7 +1,5 @@
 @extends('layouts.file_list_without_filter')
 @php
-    //$noticeController = new \App\Http\Controllers\NoticeController();
-    //$notices = $noticeController->view('Academic Calender');
     $notices = \App\Models\Notice::bySection('Academic Calender')->paginate(10);
 @endphp
 @section('title', 'Academic')
