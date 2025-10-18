@@ -5,9 +5,7 @@
 @section('page-title', 'Admit Card')
 @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff')
 @php
-    $noticeController = new \App\Http\Controllers\NoticeController();
-    $notices = $noticeController->view('Admission Circular');
-    //$files = $notices->notice_files ? $notices->notice_files->all() : [];
+    $notices = \App\Models\Notice::bySection('Admit Card')->paginate(10);
 @endphp
 @section('notices-content')
     <!-- Notice Items -->

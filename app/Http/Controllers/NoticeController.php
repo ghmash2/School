@@ -103,7 +103,7 @@ class NoticeController extends Controller
             $validated = array_map(function ($value) {
                 return is_string($value) ? strip_tags($value) : $value;
             }, $validated);
-            
+
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']);
         }
@@ -154,7 +154,7 @@ class NoticeController extends Controller
 
     public function view($section)
     {
-        $content = Notice::where('section', $section)->with('notice_files')->get();
+        $content = Notice::where('section', $section)->with('notice_files')->paginate(10);
 
         return $content;
     }

@@ -1,8 +1,6 @@
 @extends('layouts.file_list_without_filter')
 @php
-    $noticeController = new \App\Http\Controllers\NoticeController();
-    $notices = $noticeController->view('Admission Result');
-    //$files = $notices->notice_files ? $notices->notice_files->all() : [];
+    $notices = \App\Models\Notice::bySection('Admission Result')->paginate(10);
 @endphp
 @section('title', 'Admission')
 

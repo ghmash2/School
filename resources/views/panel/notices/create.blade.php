@@ -38,7 +38,7 @@
                             <option value="Prospectus" {{ old('section') == 'Prospectus' ? 'selected' : '' }}>Prospectus</option>
                             <option value="Admission Result" {{ old('section') == 'Admission Result' ? 'selected' : '' }}>Admission Result</option>
                             <option value="Waiting List" {{ old('section') == 'Waiting List' ? 'selected' : '' }}>Waiting List</option>
-                            <option value="Courses" {{ old('section') == 'Courses' ? 'selected' : '' }}>Courses</option>
+                            <option value="Admission Course Program" {{ old('section') == 'Admission Course Program' ? 'selected' : '' }}>Admission Course Program</option>
                             <option value="Digital-Class-Six" {{ old('section') == 'Digital-Class-Six' ? 'selected' : '' }}>Digital-Class-Six</option>
                             <option value="Digital-Class-Seven" {{ old('section') == 'Digital-Class-Seven' ? 'selected' : '' }}>Digital-Class-Seven</option>
                             <option value="Digital-Class-Eight" {{ old('section') == 'Digital-Class-Eight' ? 'selected' : '' }}>Digital-Class-Eight</option>

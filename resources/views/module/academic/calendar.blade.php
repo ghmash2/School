@@ -1,11 +1,12 @@
 @extends('layouts.file_list_without_filter')
 @php
-    $noticeController = new \App\Http\Controllers\NoticeController();
-    $notices = $noticeController->view('Academic Calender');
+    //$noticeController = new \App\Http\Controllers\NoticeController();
+    //$notices = $noticeController->view('Academic Calender');
+    $notices = \App\Models\Notice::bySection('Academic Calender')->paginate(10);
 @endphp
 @section('title', 'Academic')
 
-@section('page-title',  'Academic Calendar')
+@section('page-title', 'Academic Calendar')
 
 @section('notices-content')
     <!-- Notice Items -->
@@ -62,4 +63,9 @@
             <p>No files found.</p>
         </div>
     @endif
+@endsection
+@section('pagination')
+    <div class="pagination">
+        {{ $notices->links() }}
+    </div>
 @endsection
