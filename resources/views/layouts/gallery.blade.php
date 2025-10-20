@@ -41,10 +41,7 @@
 
         <!-- Pagination -->
         <div class="pagination">
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#"><i class="fas fa-chevron-right"></i></a>
+            @yield('pagination')
         </div>
     </div>
 

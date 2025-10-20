@@ -1,12 +1,13 @@
 @php
     $info = \App\Models\BasicInfo::first();
 @endphp
+
 <body>
     <!-- Main header -->
     <header class="main-header">
         <div class="header-container">
             <div class="logo-container">
-                 <img src="{{ asset('storage/' . $info->logo) }}" alt="logo" class="logo">
+                <img src="{{ asset('storage/' . $info->logo) }}" alt="logo" class="logo">
                 <div class="school-name">
                     <h1>{{ $info->name }}</h1>
                     <p>{{ $info->motto }}</p>
@@ -123,8 +124,10 @@
                         {{-- <a href="{{ route('test') }}">Test</a> --}}
                     </div>
                 </li>
+
+
                 <li class="menu-item">
-                    <a href="{{ route('showLogin') }}">Login </a>
+                    <div id="google_translate_element"></div>
                 </li>
             </ul>
         </div>
@@ -148,5 +151,17 @@
                 });
             });
         }
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bn', // English + Bangla
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
 </body>

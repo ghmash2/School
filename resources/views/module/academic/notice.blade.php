@@ -5,7 +5,7 @@
 
 @section('notices-content')
     @php
-        $notices = \App\Models\Notice::bySection('Notices')->paginate(2);
+        $notices = \App\Models\Notice::bySection('Notices')->paginate(5);
     @endphp
 
     <!-- Notice Items -->

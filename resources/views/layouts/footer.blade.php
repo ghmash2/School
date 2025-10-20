@@ -50,7 +50,8 @@
                     <a href="{{ $info->youtube }}"><i class="fab fa-youtube"></i></a>
 
                 </div>
-
+                <h3>Admin Panel</h3>
+                <a href="{{ route('showLogin') }}" class="btn">Login </a>
                 {{-- <div class="newsletter">
                     <h4>Subscribe to Newsletter</h4>
                     <form class="newsletter-form">

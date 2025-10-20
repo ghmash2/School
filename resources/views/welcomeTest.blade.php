@@ -422,7 +422,7 @@
                         title.textContent = 'Welcome to BGAB';
 
                         const description = document.createElement('p');
-                        description.textContent = 'Providing quality education since 1985';
+                        description.textContent = 'Providing quality education for the future';
 
                         const button = document.createElement('a');
                         button.href = '/about/why-study';

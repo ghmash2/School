@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const videoFrame = document.getElementById('videoFrame');
             if (videoFrame) {
                 // Replace with actual video URL in production
-                videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Example video
+                videoFrame.src = ''; // Example video
                 modalCaption.innerHTML = title;
                 modal.style.display = 'block';
             } else {

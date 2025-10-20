@@ -8,6 +8,10 @@
 {{-- @section('page-subtitle', 'Important notices, circulars, and documents for students, parents, and staff') --}}
 
 @section('notices-content')
+    @php
+        $notices = \App\Models\Notice::bySection('Class Routine')->paginate(5);
+    @endphp
+
     <!-- Notice Items -->
     @foreach ($notices as $notice)
         @php
@@ -60,6 +64,33 @@
     @if (count($notices) === 0)
         <div class="no-notices">
             <p>No files found.</p>
+        </div>
+    @endif
+@endsection
+
+@section('pagination')
+    @if($notices->hasPages())
+        <div class="pagination-container">
+            <div class="pagination">
+                {{-- Previous --}}
+                @if($notices->onFirstPage())
+                    <span class="page-btn disabled">Previous</span>
+                @else
+                    <a href="{{ $notices->previousPageUrl() }}" class="page-btn">Previous</a>
+                @endif
+
+                {{-- Page Info --}}
+                <span class="page-info">
+                    Page {{ $notices->currentPage() }} of {{ $notices->lastPage() }}
+                </span>
+
+                {{-- Next --}}
+                @if($notices->hasMorePages())
+                    <a href="{{ $notices->nextPageUrl() }}" class="page-btn">Next</a>
+                @else
+                    <span class="page-btn disabled">Next</span>
+                @endif
+            </div>
         </div>
     @endif
 @endsection

@@ -1,12 +1,13 @@
 @extends('layouts.file_list_without_filter')
-@php
-    $notices = \App\Models\Notice::bySection('Academic Calender')->paginate(10);
-@endphp
 @section('title', 'Academic')
 
 @section('page-title', 'Academic Calendar')
 
 @section('notices-content')
+    @php
+        $notices = \App\Models\Notice::bySection('Academic Calender')->paginate(5);
+    @endphp
+
     <!-- Notice Items -->
     @foreach ($notices as $notice)
         @php
@@ -62,8 +63,30 @@
         </div>
     @endif
 @endsection
+
 @section('pagination')
-    <div class="pagination">
-        {{ $notices->links() }}
-    </div>
+    @if($notices->hasPages())
+        <div class="pagination-container">
+            <div class="pagination">
+                {{-- Previous --}}
+                @if($notices->onFirstPage())
+                    <span class="page-btn disabled">Previous</span>
+                @else
+                    <a href="{{ $notices->previousPageUrl() }}" class="page-btn">Previous</a>
+                @endif
+
+                {{-- Page Info --}}
+                <span class="page-info">
+                    Page {{ $notices->currentPage() }} of {{ $notices->lastPage() }}
+                </span>
+
+                {{-- Next --}}
+                @if($notices->hasMorePages())
+                    <a href="{{ $notices->nextPageUrl() }}" class="page-btn">Next</a>
+                @else
+                    <span class="page-btn disabled">Next</span>
+                @endif
+            </div>
+        </div>
+    @endif
 @endsection
